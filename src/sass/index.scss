@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: dimgrey;
+}
+
+img {
+  display: none;
+}
+
+#canvas {
+  margin: 50px auto;
+  display: block;
+  border: 2px solid black;
+  cursor: crosshair;
+}
