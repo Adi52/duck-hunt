@@ -1,48 +1,52 @@
 
 export default class Dog {
     constructor(gameWidth, gameHeight, ctx) {
-
+        // game properties
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
+        this.ctx = ctx;
+        this.runIntro = false; // tu zmien jeżeli chesz intro!
+        this.drawGrass = false;
+        this.runPickUpAnimation = false;
+        this.runLaughAnimation = false;
 
+        // dog properties
         this.position = {
-            x: -150,
+            x: -155,
             y: gameHeight * 0.6,
         }
-        this.ctx = ctx;
 
+        // images
         this.dogImage = document.querySelector('#dogImg');
         this.grassImage = document.querySelector('#grass');
 
-        this.drawGrass = false;
-
+        // animations, sprites
         this.dogWidth = 57.2;
         this.dogHeight = 52;
         this.maxFrame = 4;
         this.currentFrame = 1;
-
         this.animationForward = true;
-
         this.sniffTimer = 0;
         this.sniffFlag = true;
-
         this.currentRow = 0;
         this.correction = 0;
-
+        this.correctionRow = 0;
+        this.dWidthCorrection = 0;
+        this.pickUpDirection = 1;
+        this.counter = 0;
         this.speed = 1;
-
     }
 
     draw() {
         this.ctx.drawImage(
             this.dogImage,
-            this.dogWidth * Math.round(this.currentFrame),
+            this.dogWidth * Math.round(this.currentFrame) + this.correctionRow,
             this.currentRow * this.dogHeight,
             this.dogWidth + this.correction,
             this.dogHeight,
             this.position.x,
             this.position.y,
-            this.dogWidth + 100,
+            this.dogWidth + 100 + this.dWidthCorrection,
             this.dogHeight + 100,
         )
         if (this.drawGrass) {
@@ -68,7 +72,13 @@ export default class Dog {
         this.currentFrame = 0;
         this.animationForward = true;
         this.sniffTimer += deltaTime;
-        if (this.sniffTimer > 1500) {
+
+        if (this.sniffTimer > 2000) {
+            // Stop display intro after jump
+            this.runIntro = 0;
+            this.correction = 0;
+        } else if (this.sniffTimer > 1500) {
+            // Wait 1500ms after sniff
             this.currentRow = 1;
             this.correction = -8.5;
             this.currentFrame = 1;
@@ -77,9 +87,7 @@ export default class Dog {
             if (this.position.y < 250) {
                 this.speed = -this.speed;
                 this.drawGrass = true;
-
             }
-
         }
 
     }
@@ -110,10 +118,72 @@ export default class Dog {
         }
     }
 
-    update(deltaTime) {
-        // fix deltaTime = 0 (we cant divide bt zero)
-        if (!deltaTime) return;
+    laugh() {
+        this.position.x = this.gameWidth/2 - this.dogWidth;
+        this.position.y = this.gameHeight * 0.6;
+        // this.position.y = this.gameHeight * 0.4;
+        this.currentRow = 1;
+        this.speed = 1;
+        this.correction = -27;
+        this.dWidthCorrection = -60;
 
+        this.currentFrame = 5;
+        this.correctionRow = -32;
+
+        this.drawGrass = true;
+
+        this.runLaughAnimation = true;
+        this.runPickUpAnimation = true;
+    }
+
+    laughAnimation(deltaTime) {
+        this.counter += deltaTime/200;
+
+        if (Math.round(this.counter) % 2 === 0) {
+            this.currentFrame = 5;
+            this.correctionRow = -32;
+        } else {
+            this.currentFrame = 6;
+            this.correctionRow = -59;
+        }
+    }
+
+    pickUp(numberOfDucks) {
+        this.position.x = this.gameWidth/2 - this.dogWidth;
+        this.position.y = this.gameHeight * 0.6;
+        this.currentRow = 1;
+        this.speed = 1;
+
+        if (numberOfDucks === 1) {
+            this.currentFrame = 3;
+            this.correctionRow = -32;
+        }
+
+        if (numberOfDucks === 2) {
+            this.currentFrame = 4;
+            this.correctionRow = -32.8;
+        }
+        this.drawGrass = true;
+        this.runPickUpAnimation = true;
+    }
+
+    pickUpAnimation(deltaTime) {
+
+        if (this.position.y > this.gameHeight)
+        {
+            this.runPickUpAnimation = false;
+            this.pickUpDirection = -this.pickUpDirection ;
+
+
+        } else if (this.position.y < this.gameHeight*0.45) {
+
+            this.pickUpDirection = -this.pickUpDirection ;
+        }
+
+        this.position.y -= deltaTime/5 * this.pickUpDirection;
+    }
+
+    intro(deltaTime) {
         if (this.position.x > 100 && this.sniffFlag) {
             // here dog pass tree and start sniff
             this.sniff(deltaTime);
@@ -123,6 +193,20 @@ export default class Dog {
             // here we can set speed of the dog (x)
             this.walking(deltaTime);
             this.position.x += 15 / deltaTime;
+        }
+    }
+
+    update(deltaTime) {
+        // fix deltaTime = 0 (we cant divide bt zero)
+        if (!deltaTime) return;
+
+        if (this.runIntro) {
+            this.intro(deltaTime);
+        } else if (this.runPickUpAnimation) {
+            this.pickUpAnimation(deltaTime);
+        }
+        if (this.runLaughAnimation) {
+            this.laughAnimation(deltaTime);
         }
     }
 }
