@@ -174,7 +174,7 @@ export default class Duck {
     update(deltaTime) {
         if (!deltaTime) return;
 
-        if (this.wholeDistanceTraveled > 1000) this.beHit = true;
+        // if (this.wholeDistanceTraveled > 1000) this.beHit = true;
         if (this.beHit) {
             this.beHitAnimation(deltaTime);
         } else {
