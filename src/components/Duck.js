@@ -6,16 +6,18 @@ export default class Duck {
         this.gameHeight = game.gameHeight;
         this.ctx = game.ctx;
 
-        this.beHit = false; //do zmiany!
+        this.beHit = false;
 
         // duck properties
+        this.duckAlive = true;
+        this.startRespawn = false;
         this.directionX = (Math.random()*1.3) + 0.9;
         this.directionY = (Math.random()*1.3) + 0.9;
         this.duckSpeed = 1;
         this.points = 500;
         this.position = {
-            y: this.gameHeight * 0.6,
-            x: (Math.random() * 600) + 50,
+            y: this.gameHeight,
+            x: this.gameWidth,
         };
 
         // images
@@ -98,6 +100,8 @@ export default class Duck {
         this.counter += deltaTime/200;
 
         if (this.counter < 6) {
+            this.duckAlive = false;
+
             this.ducksImage = this.ducksFallImage;
             this.currentFrame = 0;
         } else {
@@ -174,10 +178,13 @@ export default class Duck {
     update(deltaTime) {
         if (!deltaTime) return;
 
-        // if (this.wholeDistanceTraveled > 1000) this.beHit = true;
         if (this.beHit) {
             this.beHitAnimation(deltaTime);
-        } else {
+        } else if (this.startRespawn) {
+            this.respawn();
+            this.startRespawn = false;
+        }
+        else if (this.duckAlive) {
             this.flyUpAnimation(deltaTime);
             this.flyPath(deltaTime);
         }

@@ -16,14 +16,24 @@ export default class Game {
 
     start() {
         this.input = new Input(document.querySelector('#canvas'));
-
-        this.colission = new Collision(this);
-
         this.dog = new Dog(this);
         this.duck = new Duck(this);
+        this.colission = new Collision(this);
+
+        this.runIntro();
+        this.respawn = true;
+
         // this.redDuck = new RedDuck(this);
         // this.blueDuck = new BlueDuck(this);
 
+    }
+
+    runIntro() {
+        this.dog.runIntro = true;
+    }
+
+    respawnDuck() {
+        this.duck.startRespawn = true;
     }
 
 
@@ -39,11 +49,12 @@ export default class Game {
         this.dog.update(deltaTime);
         this.duck.update(deltaTime);
 
+        if (!this.dog.runIntro && this.respawn) {
+            this.respawnDuck();
+            this.respawn = false;
+        }
 
         // this.redDuck.update(deltaTime);
         // this.blueDuck.update(deltaTime);
     }
-
 }
-
-// Pamiętaj o rysowaniu trawy gdy gdy skończy się intro. Musi być nad wszystkim innym!

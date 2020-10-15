@@ -18,7 +18,7 @@ export default class Dog {
 
         // images
         this.dogImage = document.querySelector('#dogImg');
-        this.grassImage = document.querySelector('#grass');
+        // this.grassImage = document.querySelector('#grass');
 
         // animations, sprites
         this.dogWidth = 57.2;
@@ -49,10 +49,10 @@ export default class Dog {
             this.dogWidth + 100 + this.dWidthCorrection,
             this.dogHeight + 100,
         )
-        if (this.drawGrass) {
-            // add grass image when dog is ending jump. Its like index-z: 1;
-            this.ctx.drawImage(this.grassImage, 0, 0, this.gameWidth, this.gameHeight);
-        }
+        // if (this.drawGrass) {
+        //     // add grass image when dog is ending jump. Its like index-z: 1;
+        //     this.ctx.drawImage(this.grassImage, 0, 0, this.gameWidth, this.gameHeight);
+        // }
     }
 
     walking(deltaTime) {
@@ -75,7 +75,7 @@ export default class Dog {
 
         if (this.sniffTimer > 2000) {
             // Stop display intro after jump
-            this.runIntro = 0;
+            this.runIntro = false;
             this.correction = 0;
         } else if (this.sniffTimer > 1500) {
             // Wait 1500ms after sniff

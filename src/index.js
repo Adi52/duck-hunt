@@ -1,13 +1,12 @@
 import './sass/index.scss';
 
 import Game from "./components/Game"
-import Input from "./components/Input";
-
 
 let canvas = document.querySelector('#canvas');
 let ctx = canvas.getContext('2d');
 let background_game_image = document.querySelector('#background');
 
+let grassImage = document.querySelector('#grass');
 
 const GAME_WIDTH = 768;
 const GAME_HEIGHT = 720;
@@ -17,8 +16,6 @@ let game = new Game(GAME_WIDTH, GAME_HEIGHT, ctx)
 game.start();
 
 let lastTime = 0;
-
-// canvas.addEventListener('click', () => {duck.respawn()});
 
 
 
@@ -30,6 +27,10 @@ function gameLoop(timestamp) {
 
     game.update(deltaTime);
     game.draw();
+
+    if (game.dog.drawGrass) {
+        ctx.drawImage(grassImage, 0, 0, GAME_WIDTH, GAME_HEIGHT);
+    }
 
     requestAnimationFrame(gameLoop);
 }
