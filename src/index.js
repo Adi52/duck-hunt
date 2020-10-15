@@ -1,28 +1,19 @@
 import './sass/index.scss';
 
-import Dog from "./components/Dog";
-import Duck from "./components/Duck";
-import RedDuck from "./components/RedDuck";
-import BlueDuck from "./components/BlueDuck";
+import Game from "./components/Game"
 
 
 let canvas = document.querySelector('#canvas');
 let ctx = canvas.getContext('2d');
-
 let background_game_image = document.querySelector('#background');
-
-
 
 
 const GAME_WIDTH = 768;
 const GAME_HEIGHT = 720;
 
 
-
-let dog = new Dog(GAME_WIDTH, GAME_HEIGHT, ctx);
-let duck = new Duck(GAME_WIDTH, GAME_HEIGHT, ctx);
-let redDuck = new RedDuck(GAME_WIDTH, GAME_HEIGHT, ctx);
-let blueDuck = new BlueDuck(GAME_WIDTH, GAME_HEIGHT, ctx);
+let game = new Game(GAME_WIDTH, GAME_HEIGHT, ctx)
+game.start();
 
 let lastTime = 0;
 
@@ -31,23 +22,10 @@ let lastTime = 0;
 function gameLoop(timestamp) {
     let deltaTime = timestamp - lastTime;
     lastTime = timestamp;
-
-
-
     ctx.drawImage(background_game_image, 0, 0, GAME_WIDTH, GAME_HEIGHT);
-    dog.update(deltaTime);
-    dog.draw();
 
-    duck.update(deltaTime);
-    duck.draw();
-
-    redDuck.update(deltaTime);
-    redDuck.draw();
-
-    blueDuck.update(deltaTime);
-    blueDuck.draw();
-
-
+    game.update(deltaTime);
+    game.draw();
 
     requestAnimationFrame(gameLoop);
 }

@@ -1,10 +1,10 @@
 
 export default class Duck {
-    constructor(gameWidth, gameHeight, ctx) {
+    constructor(game) {
         // game properties
-        this.gameWidth = gameWidth;
-        this.gameHeight = gameHeight;
-        this.ctx = ctx;
+        this.gameWidth = game.gameWidth;
+        this.gameHeight = game.gameHeight;
+        this.ctx = game.ctx;
 
         this.beHit = false; //do zmiany!
 

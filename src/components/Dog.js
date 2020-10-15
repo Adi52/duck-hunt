@@ -1,10 +1,10 @@
 
 export default class Dog {
-    constructor(gameWidth, gameHeight, ctx) {
+    constructor(game) {
         // game properties
-        this.gameWidth = gameWidth;
-        this.gameHeight = gameHeight;
-        this.ctx = ctx;
+        this.gameWidth = game.gameWidth;
+        this.gameHeight = game.gameHeight;
+        this.ctx = game.ctx;
         this.runIntro = false; // tu zmien jeżeli chesz intro!
         this.drawGrass = false;
         this.runPickUpAnimation = false;
@@ -13,7 +13,7 @@ export default class Dog {
         // dog properties
         this.position = {
             x: -155,
-            y: gameHeight * 0.6,
+            y: game.gameHeight * 0.6,
         }
 
         // images
