@@ -4,13 +4,13 @@ export default class GameStats {
         this.score = 0;
         this.bestScore = 0;
 
-        this.shoots = 3;
+        this.shoot = 0;
 
         this.correctHits = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         this.missHits = 5;
 
-        this.currentSubRound = 1;
-        this.round = 1;
+        this.currentSubRound = 0;
+        this.round = 0;
 
     }
 

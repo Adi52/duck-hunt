@@ -1,14 +1,12 @@
 
 export default class Input {
-    constructor(canvas) {
-        this.canvas = canvas;
-    }
-
-    getMousePosition() {
-        this.canvas.addEventListener("mousedown", (event) => {
-            let rect = this.canvas.getBoundingClientRect();
+    constructor(game, canvas) {
+        canvas.addEventListener("mousedown", (event) => {
+            let rect = canvas.getBoundingClientRect();
             this.mouseX = event.clientX - rect.left;
             this.mouseY = event.clientY - rect.top;
+            game.gameStats.shoot++;
+            console.log(game.gameStats.shoot);
         })
     }
 }

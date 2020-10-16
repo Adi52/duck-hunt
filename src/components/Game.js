@@ -1,5 +1,6 @@
 import Input from "./Input";
 import Collision from "./Collision";
+import GameStats from "./GameStats";
 
 import Dog from "./Dog";
 import Duck from "./Duck";
@@ -17,13 +18,15 @@ export default class Game {
     }
 
     start() {
-        this.input = new Input(document.querySelector('#canvas'));
+        this.input = new Input(this, document.querySelector('#canvas'));
+        this.gameStats = new GameStats();
+
         this.dog = new Dog(this);
         this.duck = new Duck(this);
         this.colission = new Collision(this);
 
-        this.runIntro();
-        this.respawn = true;
+        this.newRound();
+
 
         // this.redDuck = new RedDuck(this);
         // this.blueDuck = new BlueDuck(this);
@@ -46,6 +49,19 @@ export default class Game {
     }
 
     gameMode2() {
+
+    }
+
+    newRound() {
+        this.gameStats.round++;
+        this.runIntro();
+        this.newSubRound();
+    }
+
+    newSubRound() {
+        this.gameStats.currentSubRound++;
+        this.respawn = true;
+
 
     }
 

@@ -11,8 +11,6 @@ export default class Collision {
     }
 
     update(duck) {
-        this.input.getMousePosition();
-
         if(this.hitTestPoint(duck.position.x, duck.position.y, duck.widthDuck, duck.heightDuck, this.input.mouseX, this.input.mouseY)) {
             duck.beHit = true;
         }
