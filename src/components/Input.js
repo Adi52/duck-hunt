@@ -5,8 +5,10 @@ export default class Input {
             let rect = canvas.getBoundingClientRect();
             this.mouseX = event.clientX - rect.left;
             this.mouseY = event.clientY - rect.top;
-            game.gameStats.shoot++;
-            console.log(game.gameStats.shoot);
+
+            if (game.canShoot) {
+                game.gameStats.shoot++;
+            }
         })
     }
 }

@@ -25,6 +25,8 @@ export default class Game {
         this.duck = new Duck(this);
         this.colission = new Collision(this);
 
+
+        this.canShoot = false;
         this.newRound();
 
 
@@ -88,7 +90,15 @@ export default class Game {
 
         if (!this.dog.runIntro && this.respawn) {
             this.respawnDuck();
+            this.canShoot = true;
             this.respawn = false;
+        }
+
+        if (this.gameStats.shoot >=  3) {
+            this.canShoot = false;
+
+            // lose round
+            console.log('Koniec strzałów');
         }
 
 

@@ -4,8 +4,8 @@
     <list default="true" id="9a434661-c348-492d-96cc-8ebb9f3cbbae" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Collision.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Collision.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Duck.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Duck.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/GameStats.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GameStats.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Input.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Input.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +65,7 @@
       <workItem from="1602490509604" duration="115000" />
       <workItem from="1602493901232" duration="43564000" />
       <workItem from="1602745880446" duration="16484000" />
-      <workItem from="1602854976220" duration="6096000" />
+      <workItem from="1602854976220" duration="9123000" />
     </task>
     <servers />
   </component>

@@ -9,15 +9,15 @@ export default class Duck {
         this.beHit = false;
 
         // duck properties
-        this.duckAlive = true;
+        this.duckAlive = false;
         this.startRespawn = false;
         this.directionX = (Math.random()*1.3) + 0.9;
         this.directionY = (Math.random()*1.3) + 0.9;
         this.duckSpeed = 1;
         this.points = 500;
         this.position = {
-            y: this.gameHeight,
             x: this.gameWidth,
+            y: this.gameHeight,
         };
 
         // images
@@ -150,6 +150,7 @@ export default class Duck {
             this.toggleDuckDirection();
         }
 
+
         // collision with top or bottom wall
         if (this.position.y < 5 || this.position.y > this.gameHeight * 0.6) {
             this.directionY = -this.directionY;
@@ -183,6 +184,9 @@ export default class Duck {
             this.beHitAnimation(deltaTime);
         } else if (this.startRespawn) {
             this.respawn();
+
+            this.duckAlive = true;
+
             this.startRespawn = false;
         }
         else if (this.duckAlive) {
