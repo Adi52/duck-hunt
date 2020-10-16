@@ -49,10 +49,6 @@ export default class Dog {
             this.dogWidth + 100 + this.dWidthCorrection,
             this.dogHeight + 100,
         )
-        // if (this.drawGrass) {
-        //     // add grass image when dog is ending jump. Its like index-z: 1;
-        //     this.ctx.drawImage(this.grassImage, 0, 0, this.gameWidth, this.gameHeight);
-        // }
     }
 
     walking(deltaTime) {
@@ -62,8 +58,13 @@ export default class Dog {
         else this.currentFrame -= deltaTime / 200;
 
         // Change flag, now we can start animation dog from behind (3 frames 1->2->3->2->1->...)
-        if (this.currentFrame > this.maxFrame || this.currentFrame < 1) {
+        if (this.currentFrame > this.maxFrame) {
+            this.currentFrame = 4;
             this.animationForward = !this.animationForward;
+        } else if (this.currentFrame < 1) {
+            this.currentFrame = 1;
+            this.animationForward = !this.animationForward;
+
         }
     }
 
@@ -148,8 +149,9 @@ export default class Dog {
         }
     }
 
-    pickUp(numberOfDucks) {
-        this.position.x = this.gameWidth/2 - this.dogWidth;
+    pickUp(numberOfDucks, duckPosX) {
+        // this.position.x = this.gameWidth/2 - this.dogWidth;
+        this.position.x = duckPosX - (this.dogWidth + 100) / 2;
         this.position.y = this.gameHeight * 0.6;
         this.currentRow = 1;
         this.speed = 1;
@@ -163,7 +165,7 @@ export default class Dog {
             this.currentFrame = 4;
             this.correctionRow = -32.8;
         }
-        this.drawGrass = true;
+        // this.drawGrass = true;
         this.runPickUpAnimation = true;
     }
 

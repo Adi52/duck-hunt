@@ -12,6 +12,8 @@ export default class Game {
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
         this.ctx = ctx;
+
+        this.gameMode = 1; // 1 or 2 ducks
     }
 
     start() {
@@ -36,6 +38,17 @@ export default class Game {
         this.duck.startRespawn = true;
     }
 
+    gameMode1(deltaTime) {
+        if (this.duck.runDogPickUp) {
+            this.dog.pickUp(1, this.duck.position.x);
+            this.duck.runDogPickUp = false;
+        }
+    }
+
+    gameMode2() {
+
+    }
+
 
     draw() {
         this.dog.draw();
@@ -45,6 +58,14 @@ export default class Game {
     }
 
     update(deltaTime) {
+        if (this.gameMode === 1) {
+            this.gameMode1(deltaTime);
+        } else if (this.gameMode === 2) {
+            this.gameMode2();
+        } else {
+            console.log('Error');
+        }
+
         this.colission.update(this.duck);
         this.dog.update(deltaTime);
         this.duck.update(deltaTime);
@@ -53,6 +74,8 @@ export default class Game {
             this.respawnDuck();
             this.respawn = false;
         }
+
+
 
         // this.redDuck.update(deltaTime);
         // this.blueDuck.update(deltaTime);

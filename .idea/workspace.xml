@@ -6,7 +6,6 @@
       <change beforePath="$PROJECT_DIR$/src/components/Dog.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dog.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Duck.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Duck.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +63,8 @@
       <workItem from="1602406435924" duration="28968000" />
       <workItem from="1602490509604" duration="115000" />
       <workItem from="1602493901232" duration="43564000" />
-      <workItem from="1602745880446" duration="15686000" />
+      <workItem from="1602745880446" duration="16484000" />
+      <workItem from="1602854976220" duration="4902000" />
     </task>
     <servers />
   </component>

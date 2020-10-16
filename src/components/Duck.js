@@ -114,6 +114,7 @@ export default class Duck {
 
         if (this.position.y > this.gameWidth * 0.7) {
             this.beHit = false;
+            this.runDogPickUp = true;
         }
 
         if (Math.round(this.counter) % 2 === 0) this.currentFrame = 1;
