@@ -112,7 +112,7 @@ export default class Duck {
     fallAnimation(deltaTime) {
         this.counter += deltaTime/200;
 
-        if (this.position.y > this.gameWidth * 0.7) {
+        if (this.position.y > this.gameWidth) {
             this.beHit = false;
 
             this.counterBeHit = 0;
@@ -122,7 +122,7 @@ export default class Duck {
         if (Math.round(this.counter) % 2 === 0) this.currentFrame = 1;
         else this.currentFrame = 2;
 
-        this.position.y += deltaTime/4;
+        this.position.y += deltaTime/3;
     }
 
     flyAway(deltaTime) {
@@ -206,7 +206,6 @@ export default class Duck {
             this.respawn();
 
             this.duckAlive = true;
-
             this.startRespawn = false;
         }
         else if (this.duckAlive) {

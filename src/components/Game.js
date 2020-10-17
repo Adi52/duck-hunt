@@ -51,6 +51,12 @@ export default class Game {
     }
 
     newRound() {
+        this.dog.resetPropertiesAfterRound();
+
+        console.log(`Round: ${this.gameStats.round}`);
+
+        this.gameStats.currentSubRound = 0;
+
         this.gameStats.round++;
         this.runIntro();
         this.newSubRound();
@@ -104,8 +110,14 @@ export default class Game {
             }
         }
 
-        if (this.dog.canStartNextSubRound && this.gameStats.currentSubRound !== 10) {
-            this.newSubRound();
+        if (this.dog.canStartNextSubRound) {
+            if (this.gameStats.currentSubRound !== 2) {
+                // change it on 10!
+                this.newSubRound();
+            } else {
+                // New round after 10 sub rounds;
+                this.newRound();
+            }
         }
     }
 }

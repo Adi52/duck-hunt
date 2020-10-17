@@ -37,6 +37,18 @@ export default class Dog {
         this.speed = 1;
     }
 
+    resetPropertiesAfterRound() {
+        this.drawGrass = false;
+        this.currentFrame = 1;
+        this.correctionRow = 0;
+        this.currentRow = 0;
+
+        this.sniffFlag = true;
+
+        this.position.x = -155;
+        this.position.y = this.gameHeight * 0.6;
+    }
+
     draw() {
         this.ctx.drawImage(
             this.dogImage,
