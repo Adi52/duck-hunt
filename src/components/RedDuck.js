@@ -6,6 +6,6 @@ export default class RedDuck extends Duck {
         super(gameWidth, gameHeight, ctx);
         this.currentRow = 1;
         this.points = 1000;
-        this.duckSpeed = 1.5;
+        this.duckSpeed = 1.3;
     }
 }

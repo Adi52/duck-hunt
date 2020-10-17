@@ -18,6 +18,9 @@ export default class Game {
     }
 
     start() {
+        this.ducks = [new Duck(this), new RedDuck(this), new BlueDuck(this)];
+
+
         this.input = new Input(this, document.querySelector('#canvas'));
         this.gameStats = new GameStats();
 
@@ -61,9 +64,23 @@ export default class Game {
     }
 
     newSubRound() {
-        this.gameStats.currentSubRound++;
-        this.respawn = true;
+        console.log('New round')
+        this.duck = this.ducks[Math.floor(Math.random() * 3)];
 
+        this.dog.canStartNextSubRound = false;
+        // console.log(this.gameStats.correctHits);
+
+        this.gameStats.currentSubRound++;
+        this.gameStats.shoot = 0;
+
+        this.respawn = true;
+    }
+
+    round() {
+
+    }
+
+    subRound() {
 
     }
 
@@ -71,6 +88,7 @@ export default class Game {
     draw() {
         this.dog.draw();
         this.duck.draw();
+        //
         // this.redDuck.draw();
         // this.blueDuck.draw();
     }
@@ -88,17 +106,25 @@ export default class Game {
         this.dog.update(deltaTime);
         this.duck.update(deltaTime);
 
+
         if (!this.dog.runIntro && this.respawn) {
             this.respawnDuck();
             this.canShoot = true;
             this.respawn = false;
         }
 
-        if (this.gameStats.shoot >=  3) {
+        if (this.gameStats.shoot >= 3) {
             this.canShoot = false;
+            // lose sub round
+            if (!this.duck.beHit) {
+                // this need change
+                console.log('Koniec strzałów');
+            }
 
-            // lose round
-            console.log('Koniec strzałów');
+        }
+
+        if (this.dog.canStartNextSubRound && this.gameStats.currentSubRound !== 10) {
+            this.newSubRound();
         }
 
 
@@ -107,3 +133,4 @@ export default class Game {
         // this.blueDuck.update(deltaTime);
     }
 }
+

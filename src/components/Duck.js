@@ -34,6 +34,7 @@ export default class Duck {
         this.currentRow = 0;
         this.duckDirection = 1;
         this.counter = 0;
+        this.counterBeHit = 0;
 
         // fly path
         this.distanceTraveled = 0;
@@ -73,7 +74,7 @@ export default class Duck {
 
 
     respawn() {
-        this.position.y = this.gameHeight * 0.6;
+        this.position.y = this.gameHeight * 0.6 - 2;
         this.position.x = (Math.random() * 600) + 50;
     }
 
@@ -97,9 +98,9 @@ export default class Duck {
     }
 
     beHitAnimation(deltaTime) {
-        this.counter += deltaTime/200;
+        this.counterBeHit += deltaTime/200;
 
-        if (this.counter < 6) {
+        if (this.counterBeHit < 6) {
             this.duckAlive = false;
 
             this.ducksImage = this.ducksFallImage;
@@ -114,6 +115,8 @@ export default class Duck {
 
         if (this.position.y > this.gameWidth * 0.7) {
             this.beHit = false;
+
+            this.counterBeHit = 0;
             this.runDogPickUp = true;
         }
 
@@ -125,6 +128,10 @@ export default class Duck {
 
     toggleDuckDirection() {
         this.duckDirection = -this.duckDirection;
+    }
+
+    flyAway(deltaTime) {
+
     }
 
 

@@ -7,6 +7,8 @@ export default class GameStats {
         this.shoot = 0;
 
         this.correctHits = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        this.availableSubRounds = this.correctHits.length;
+
         this.missHits = 5;
 
         this.currentSubRound = 0;
@@ -31,6 +33,11 @@ export default class GameStats {
         } else {
             this.missHits = 1;
         }
+    }
+
+    perfectBonus() {
+
+        // to do
     }
 
     changePointsPerDuck() {

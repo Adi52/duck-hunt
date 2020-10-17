@@ -6,6 +6,6 @@ export default class BlueDuck extends Duck {
         super(gameWidth, gameHeight, ctx);
         this.currentRow = 2;
         this.points = 1500;
-        this.duckSpeed = 2;
+        this.duckSpeed = 1.6;
     }
 }

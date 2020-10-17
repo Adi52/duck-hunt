@@ -174,8 +174,10 @@ export default class Dog {
         if (this.position.y > this.gameHeight)
         {
             this.runPickUpAnimation = false;
-            this.pickUpDirection = -this.pickUpDirection ;
 
+            // After pick up animation, new duck can fly up!
+            this.canStartNextSubRound = true;
+            this.pickUpDirection = -this.pickUpDirection;
 
         } else if (this.position.y < this.gameHeight*0.45) {
 
@@ -199,7 +201,6 @@ export default class Dog {
     }
 
     update(deltaTime) {
-        // fix deltaTime = 0 (we cant divide bt zero)
         if (!deltaTime) return;
 
         if (this.runIntro) {

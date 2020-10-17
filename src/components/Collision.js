@@ -14,6 +14,8 @@ export default class Collision {
     update(duck) {
         if(this.game.canShoot && this.hitTestPoint(duck.position.x, duck.position.y, duck.widthDuck, duck.heightDuck, this.input.mouseX, this.input.mouseY)) {
             duck.beHit = true;
+
+            this.game.gameStats.correctHits[this.game.gameStats.currentSubRound - 1] = 1;
         }
         this.input.mouseX = null;
         this.input.mouseY = null;
