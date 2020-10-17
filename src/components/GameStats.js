@@ -1,6 +1,8 @@
 
 export default class GameStats {
-    constructor() {
+    constructor(game) {
+        this.game = game;
+
         this.score = 0;
         this.bestScore = 0;
 
@@ -42,18 +44,22 @@ export default class GameStats {
 
     changePointsPerDuck() {
         if (this.round < 6) {
-            this.duck.points = 500;
-            this.redDuck.points = 1000;
-            this.blueDuck.points = 1500;
+            this.game.ducks[0].points = 500;
+            this.game.ducks[1].points = 1000;
+            this.game.ducks[2].points = 1500;
         } else if (this.round < 11) {
-            this.duck.points = 800;
-            this.redDuck.points = 1600;
-            this.blueDuck.points = 2400;
+            this.game.ducks[0].points = 800;
+            this.game.ducks[1].points = 1600;
+            this.game.ducks[2].points = 2400;
         } else {
-            this.duck.points = 1000;
-            this.redDuck.points = 2000;
-            this.blueDuck.points = 3000;
+            this.game.ducks[0].points = 1000;
+            this.game.ducks[1].points = 2000;
+            this.game.ducks[2].points = 3000;
         }
+    }
+
+    changeDuckSpeed() {
+        this.game.duck.duckSpeed += 0.1;
     }
 
 

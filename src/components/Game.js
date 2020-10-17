@@ -21,10 +21,10 @@ export default class Game {
         this.ducks = [new Duck(this), new RedDuck(this), new BlueDuck(this)];
 
         this.input = new Input(this, document.querySelector('#canvas'));
-        this.gameStats = new GameStats();
+        this.gameStats = new GameStats(this);
 
         this.dog = new Dog(this);
-        this.duck = new Duck(this);
+        this.duck = this.ducks[0];
         this.colission = new Collision(this);
 
         this.canShoot = false;
@@ -58,11 +58,15 @@ export default class Game {
         this.gameStats.currentSubRound = 0;
 
         this.gameStats.round++;
+
+        this.gameStats.changeDuckSpeed();
+
         this.runIntro();
         this.newSubRound();
     }
 
     newSubRound() {
+        console.log(`Score: ${this.gameStats.score}`);
         // Generate random color duck
         this.duck = this.ducks[Math.floor(Math.random() * 3)];
         this.dog.canStartNextSubRound = false;
@@ -101,9 +105,7 @@ export default class Game {
         if (this.gameStats.shoot >= 3) {
             this.canShoot = false;
             // lose sub round
-            if (!this.duck.beHit) {
-                // to wykonuje się po zestrzeleniu kaczki 3 strzałem, trzeba to zmienić
-                // this need change
+            if (!this.duck.beHit && this.duck.duckAlive) {
                 console.log('Koniec strzałów');
                 this.duck.flyAwayNow = true;
 
