@@ -176,9 +176,8 @@ export default class Duck {
                 this.duckDirection = -this.duckDirection;
 
                 this.directionX = -this.directionX + changeDegOfDuck;
-                if (Math.random() > 0.7) {
+                if (Math.random() > 0.7 && this.position.y < this.gameHeight * 0.4) {
                     this.directionY = 0;
-
                 } else {
                     this.directionY += changeDegOfDuck;
                 }
