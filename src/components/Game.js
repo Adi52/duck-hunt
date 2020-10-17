@@ -51,9 +51,9 @@ export default class Game {
     }
 
     newRound() {
-
         console.log(`Round: ${this.gameStats.round}`);
         this.canShoot = false;
+        this.dog.drawGrass = false;
 
         this.gameStats.currentSubRound = 0;
 
@@ -67,6 +67,7 @@ export default class Game {
 
     newSubRound() {
         this.dog.resetPropertiesAfterRound();
+        this.duck.wholeDistanceTraveled = 0;
 
         console.log(`Score: ${this.gameStats.score}`);
         // Generate random color duck
@@ -81,11 +82,13 @@ export default class Game {
         this.respawn = true;
     }
 
-    subRoundGameOver() {
-        this.duck.flyAwayNow = true;
-
-        // Trzeba będzie zrobić wyświetlanie tekstu na środku ekranu (Fly Away)
-
+    loseSubRound() {
+        this.canShoot = false;
+        // lose sub round
+        if (!this.duck.beHit && this.duck.duckAlive && this.canFlyAway) {
+            console.log('Koniec strzałów');
+            this.duck.flyAwayNow = true;
+        }
     }
 
     draw() {
@@ -108,24 +111,17 @@ export default class Game {
 
 
         if (!this.dog.runIntro && this.respawn) {
-            console.log('?')
             this.respawnDuck();
             this.canShoot = true;
             this.respawn = false;
         }
 
         if (this.gameStats.shoot >= 3) {
-            this.canShoot = false;
-            // lose sub round
-            if (!this.duck.beHit && this.duck.duckAlive && this.canFlyAway) {
-                console.log('Koniec strzałów');
-                this.duck.flyAwayNow = true;
-            }
+            this.loseSubRound();
         }
 
         if (this.dog.canStartNextSubRound) {
             if (this.gameStats.currentSubRound !== 2) {
-                // change it on 10!
                 this.newSubRound();
             } else {
                 // New round after 10 sub rounds;

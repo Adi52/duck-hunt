@@ -5,6 +5,9 @@ export default class Dog {
         this.gameWidth = game.gameWidth;
         this.gameHeight = game.gameHeight;
         this.ctx = game.ctx;
+
+        this.game = game;
+
         this.runIntro = false; // tu zmien jeżeli chesz intro!
         this.drawGrass = false;
         this.runPickUpAnimation = false;
@@ -38,7 +41,7 @@ export default class Dog {
     }
 
     resetPropertiesAfterRound() {
-        this.drawGrass = false;
+        // this.drawGrass = false;
         this.currentFrame = 1;
         this.correctionRow = 0;
         this.currentRow = 0;
@@ -179,7 +182,7 @@ export default class Dog {
             this.currentFrame = 4;
             this.correctionRow = -32.8;
         }
-        // this.drawGrass = true;
+        this.drawGrass = true;
         this.runPickUpAnimation = true;
     }
 
