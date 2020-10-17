@@ -2,6 +2,8 @@
 export default class Collision {
     constructor(game) {
         this.game = game;
+
+        this.gameStats = game.gameStats;
         this.input = game.input;
         this.duck = game.duck;
     }
@@ -15,7 +17,8 @@ export default class Collision {
         if(this.game.canShoot && this.hitTestPoint(duck.position.x, duck.position.y, duck.widthDuck, duck.heightDuck, this.input.mouseX, this.input.mouseY)) {
             duck.beHit = true;
 
-            this.game.gameStats.correctHits[this.game.gameStats.currentSubRound - 1] = 1;
+            this.gameStats.score += this.game.duck.points;
+            this.gameStats.correctHits[this.gameStats.currentSubRound - 1] = 1;
         }
         this.input.mouseX = null;
         this.input.mouseY = null;
