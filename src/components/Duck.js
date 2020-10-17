@@ -6,9 +6,8 @@ export default class Duck {
         this.gameHeight = game.gameHeight;
         this.ctx = game.ctx;
 
-        this.beHit = false;
-
         // duck properties
+        this.beHit = false;
         this.duckAlive = false;
         this.startRespawn = false;
         this.directionX = (Math.random()*1.3) + 0.9;
@@ -19,6 +18,7 @@ export default class Duck {
             x: this.gameWidth,
             y: this.gameHeight,
         };
+        this.flyAwayNow = false;
 
         // images
         this.ducksFlyUpImage = document.querySelector('#ducksFlyUpImg');
@@ -74,7 +74,7 @@ export default class Duck {
 
 
     respawn() {
-        this.position.y = this.gameHeight * 0.6 - 2;
+        this.position.y = this.gameHeight * 0.6 - 10;
         this.position.x = (Math.random() * 600) + 50;
     }
 
@@ -86,7 +86,6 @@ export default class Duck {
         else {
             this.currentFrame -= deltaTime / 100;
         }
-
         // Change flag, now we can start animation dog from behind (3 frames 1->2->3->2->1->...)
         if (this.currentFrame > this.maxFrame) {
             this.animationForward = !this.animationForward;
@@ -126,21 +125,17 @@ export default class Duck {
         this.position.y += deltaTime/4;
     }
 
-    toggleDuckDirection() {
-        this.duckDirection = -this.duckDirection;
-    }
-
     flyAway(deltaTime) {
-
+        this.position.y -= deltaTime/1.3;
+        if (this.position.y < this.heightDuck + 35) {
+            this.flyAwayNow = false;
+        }
     }
 
-
-
-    flyPath(deltaTime) {
+    changePositionOfDuck(deltaTime) {
         let changeXpos = deltaTime/6 * this.duckSpeed * this.directionX;
         let changeYpos = deltaTime/6 * this.duckSpeed * this.directionY;
 
-        let changeDegOfDuck = (Math.random()) - 0.5;
         let distance = (Math.abs(changeXpos) + Math.abs(changeYpos)) / 2;
 
         this.position.x += changeXpos;
@@ -148,28 +143,38 @@ export default class Duck {
 
         this.distanceTraveled += distance;
         this.wholeDistanceTraveled += distance;
+    }
 
-
-        // colission with left or right wall
+    detectCollisionWithWalls() {
+        // collision with left or right wall
         if (this.position.x > this.gameWidth - this.widthDuck - 20 || this.position.x < 0) {
             this.directionX = -this.directionX;
             this.distanceTraveled -= 100;
-            this.toggleDuckDirection();
-        }
+            this.duckDirection = -this.duckDirection;
 
+            if (!(this.position.x > this.gameWidth - this.widthDuck - 20)) {
+                // Thanks it we can repair bug with bounded duck (in window edges).
+                this.position.x = 1;
+            } else {
+                this.position.x = this.gameWidth - this.widthDuck - 19;
+            }
+        }
 
         // collision with top or bottom wall
-        if (this.position.y < 5 || this.position.y > this.gameHeight * 0.6) {
+        if ((this.position.y < 5 || this.position.y > this.gameHeight * 0.6) && !this.flyAwayNow) {
             this.directionY = -this.directionY;
             this.distanceTraveled -= 100;
-            // this.toggleDuckDirection();
         }
+    }
+
+    randomDuckPath() {
+        let changeDegOfDuck = (Math.random()) - 0.5;
 
         if (this.distanceTraveled > 400 && Math.random() > 0.5) {
-
             this.distanceTraveled = 0;
             if (Math.random() > 0.3) {
-                this.toggleDuckDirection();
+                this.duckDirection = -this.duckDirection;
+
                 this.directionX = -this.directionX + changeDegOfDuck;
                 if (Math.random() > 0.7) {
                     this.directionY = 0;
@@ -184,11 +189,20 @@ export default class Duck {
         }
     }
 
+    flyPath(deltaTime) {
+        this.changePositionOfDuck(deltaTime)
+        this.detectCollisionWithWalls();
+        this.randomDuckPath();
+    }
+
     update(deltaTime) {
         if (!deltaTime) return;
 
         if (this.beHit) {
             this.beHitAnimation(deltaTime);
+        } else if (this.flyAwayNow) {
+            this.flyAway(deltaTime);
+            this.flyUpAnimation(deltaTime);
         } else if (this.startRespawn) {
             this.respawn();
 
@@ -200,7 +214,5 @@ export default class Duck {
             this.flyUpAnimation(deltaTime);
             this.flyPath(deltaTime);
         }
-
-
     }
 }
