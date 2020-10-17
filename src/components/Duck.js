@@ -6,6 +6,8 @@ export default class Duck {
         this.gameHeight = game.gameHeight;
         this.ctx = game.ctx;
 
+        this.game = game;
+
         // duck properties
         this.beHit = false;
         this.duckAlive = false;
@@ -127,8 +129,13 @@ export default class Duck {
 
     flyAway(deltaTime) {
         this.position.y -= deltaTime/1.3;
-        if (this.position.y < this.heightDuck + 35) {
+        if (this.position.y < -100) {
             this.flyAwayNow = false;
+            this.game.canFlyAway = false;
+
+            // this.game.dog.canStartNextSubRound = true;
+
+            this.game.dog.laugh();
         }
     }
 

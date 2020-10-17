@@ -47,6 +47,9 @@ export default class Dog {
 
         this.position.x = -155;
         this.position.y = this.gameHeight * 0.6;
+
+        this.correction = 0;
+        this.dWidthCorrection = 0;
     }
 
     draw() {
@@ -144,7 +147,6 @@ export default class Dog {
         this.correctionRow = -32;
 
         this.drawGrass = true;
-
         this.runLaughAnimation = true;
         this.runPickUpAnimation = true;
     }
@@ -186,6 +188,7 @@ export default class Dog {
         if (this.position.y > this.gameHeight)
         {
             this.runPickUpAnimation = false;
+            this.runLaughAnimation = false;
 
             // After pick up animation, new duck can fly up!
             this.canStartNextSubRound = true;
