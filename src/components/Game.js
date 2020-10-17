@@ -86,7 +86,7 @@ export default class Game {
         this.canShoot = false;
         // lose sub round
         if (!this.duck.beHit && this.duck.duckAlive && this.canFlyAway) {
-            console.log('Koniec strzałów');
+            // console.log('Koniec strzałów');
             this.duck.flyAwayNow = true;
         }
     }
@@ -121,7 +121,7 @@ export default class Game {
         }
 
         if (this.dog.canStartNextSubRound) {
-            if (this.gameStats.currentSubRound !== 2) {
+            if (this.gameStats.currentSubRound !== 10) {
                 this.newSubRound();
             } else {
                 // New round after 10 sub rounds;
@@ -131,3 +131,4 @@ export default class Game {
     }
 }
 
+// Pozostało zrobienie sprawdzania ile razy ptak nie został trafiony i określanie kiedy jest GameOver.

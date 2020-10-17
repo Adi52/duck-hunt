@@ -76,7 +76,7 @@ export default class Duck {
 
 
     respawn() {
-        this.position.y = this.gameHeight * 0.6 - 10;
+        this.position.y = this.gameHeight * 0.6 - 20;
         this.position.x = (Math.random() * 600) + 50;
     }
 
@@ -128,9 +128,8 @@ export default class Duck {
     }
 
     flyAway(deltaTime) {
-        this.position.y -= deltaTime/1.3;
+        this.position.y -= deltaTime/2;
         if (this.position.y < -100) {
-            console.log('Fly away')
             this.flyAwayNow = false;
             this.game.canFlyAway = false;
 

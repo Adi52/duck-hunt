@@ -18,11 +18,8 @@ export default class GameStats {
 
     }
 
-    // Round 01-10 = You need to hit 6 targets out of 10
-    // Round 11-12 = You need to hit 7 targets out of 10
-    // Round 13-14 = You need to hit 8 targets out of 10
-    // Round 15-19 = You need to hit 9 targets out of 10
-    // Round 20-up = Miss one and the game is over
+
+
     changeMissHits() {
         if (this.round < 11) {
             this.missHits = 5;
@@ -41,6 +38,8 @@ export default class GameStats {
 
         // to do
     }
+
+
 
     changePointsPerDuck() {
         if (this.round < 6) {
