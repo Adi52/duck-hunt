@@ -8,11 +8,12 @@ export default class GameStats {
         this.perfectBonusScore = 10000;
 
         this.shoot = 0;
+        this.missHits = 0;
 
         this.correctHits = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         this.availableSubRounds = this.correctHits.length;
 
-        this.missHits = 5;
+        this.missAvailable = 5;
 
         this.currentSubRound = 0;
         this.round = 0;
@@ -33,15 +34,15 @@ export default class GameStats {
 
     changeMissHits() {
         if (this.round < 11) {
-            this.missHits = 5;
+            this.missAvailable = 5;
         } else if (this.round < 13) {
-            this.missHits = 4;
+            this.missAvailable = 4;
         } else if (this.round < 15) {
-            this.missHits = 3;
+            this.missAvailable = 3;
         } else if (this.round < 20) {
-            this.missHits = 2;
+            this.missAvailable = 2;
         } else {
-            this.missHits = 1;
+            this.missAvailable = 1;
         }
     }
 
@@ -53,7 +54,18 @@ export default class GameStats {
 
     summaryRounds() {
         if (this.correctHits.every(element => {return element === 1})) {
+            // If player hit duck 10 times call perfect bonus
             this.perfectBonus();
+        }
+
+        this.correctHits.forEach(element => {
+            if (element === -1) {
+                this.missHits++;
+            }
+        })
+
+        if (this.missHits >= this.missAvailable) {
+            console.log('GAME OVER!');
         }
     }
 

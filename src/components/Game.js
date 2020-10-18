@@ -55,10 +55,12 @@ export default class Game {
         this.canShoot = false;
         this.dog.drawGrass = false;
 
-        this.gameStats.currentSubRound = 0;
-        this.gameStats.round++;
-
         this.gameStats.update();
+
+        this.gameStats.currentSubRound = 0;
+        this.gameStats.missHits = 0;
+
+        this.gameStats.round++;
 
         this.runIntro();
         this.newSubRound();
@@ -131,14 +133,11 @@ export default class Game {
     }
 }
 
-// Pozostało zrobienie sprawdzania ile razy ptak nie został trafiony i określanie kiedy jest GameOver.
 // Uniemożliwienie szybkich strzałów, odczekanie miedzy nimi ok 500ms
-// Śmiech psa gdy jest gameover
+// Śmiech psa gdy jest gameover i game status: paused
 // Dodanie menu oraz stworzenie grafik
 
-// Dodanie perfect bonus
-// Dodanie kaczek w pasku na dole oraz zrobienie ich animacji, zmiana 0 w tablicy correctHits na -1 gdy kaczka nie zostanie trafiona
-// na podstawie tego określanie koloru kaczki w pasku
+// Dodanie kaczek w pasku na dole oraz zrobienie ich animacji
 
 // Czerwone tło gdy ptak odlatuje + komunikaty na canvasie
 

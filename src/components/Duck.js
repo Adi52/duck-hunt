@@ -129,6 +129,11 @@ export default class Duck {
 
     flyAway(deltaTime) {
         this.position.y -= deltaTime/2;
+
+        // red sky
+        this.ctx.fillStyle = 'rgba(207, 38, 8, 0.6)';
+        this.ctx.fillRect(0, 0, this.gameWidth, this.gameHeight);
+
         if (this.position.y < -100) {
             this.flyAwayNow = false;
             this.game.canFlyAway = false;
