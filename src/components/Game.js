@@ -110,6 +110,7 @@ export default class Game {
         this.colission.update(this.duck);
         this.dog.update(deltaTime);
         this.duck.update(deltaTime);
+        this.input.limitClick(deltaTime);
 
         if (!this.dog.runIntro && this.respawn) {
             this.respawnDuck();
@@ -139,7 +140,7 @@ export default class Game {
 
 // Dodanie kaczek w pasku na dole oraz zrobienie ich animacji
 
-// Czerwone tło gdy ptak odlatuje + komunikaty na canvasie
+// komunikaty na canvasie
 
 // Ilość punktów za trafienie po zestrzeleniu kaczki wyświetlana w tle
 
