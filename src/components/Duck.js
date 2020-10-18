@@ -202,7 +202,7 @@ export default class Duck {
         this.changePositionOfDuck(deltaTime)
         this.detectCollisionWithWalls();
         this.randomDuckPath();
-        if (this.wholeDistanceTraveled > 1500) {
+        if (this.wholeDistanceTraveled > 2500) {
             this.game.loseSubRound();
         }
     }

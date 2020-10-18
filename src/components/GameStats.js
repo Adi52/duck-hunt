@@ -40,6 +40,9 @@ export default class GameStats {
     }
 
 
+    summaryRounds() {
+        console.log('Sprawdzenie przebiegu rundy czy gameOver czy perfectbonus czy kontynuacja')
+    }
 
     changePointsPerDuck() {
         if (this.round < 6) {

@@ -108,6 +108,7 @@ export default class Game {
         this.colission.update(this.duck);
         this.dog.update(deltaTime);
         this.duck.update(deltaTime);
+        this.gameStats.update();
 
 
         if (!this.dog.runIntro && this.respawn) {
@@ -125,6 +126,7 @@ export default class Game {
                 this.newSubRound();
             } else {
                 // New round after 10 sub rounds;
+                this.gameStats.summaryRounds();
                 this.newRound();
             }
         }
@@ -132,3 +134,21 @@ export default class Game {
 }
 
 // Pozostało zrobienie sprawdzania ile razy ptak nie został trafiony i określanie kiedy jest GameOver.
+// Dodanie perfect bonus
+// Czerwone tło gdy ptak odlatuje + komunikaty na canvasie
+
+// Ilość punktów za trafienie po zestrzeleniu kaczki wyświetlana w tle
+
+
+// Strzały graficznie na canvas aktualizowane
+// Uniemożliwienie szybkich strzałów, odczekanie miedzy nimi ok 500ms
+
+// Dodanie kaczek w pasku na dole oraz zrobienie ich animacji, zmiana 0 w tablicy correctHits na -1 gdy kaczka nie zostanie trafiona
+// na podstawie tego określanie koloru kaczki w pasku
+
+
+
+// Dodanie menu oraz stworzenie grafik
+// Śmiech psa gdy jest gameover
+// Konfiguracja trybu 2 kaczek (wtedy zachowanie psa gdy kaczki spadną!)
+// Dodanie dźwięków
