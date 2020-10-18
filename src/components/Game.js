@@ -1,4 +1,5 @@
 import Input from "./Input";
+import Display from "./Display";
 import Collision from "./Collision";
 import GameStats from "./GameStats";
 
@@ -6,6 +7,13 @@ import Dog from "./Dog";
 import Duck from "./Duck";
 import RedDuck from "./RedDuck";
 import BlueDuck from "./BlueDuck";
+
+const GAMESTATE = {
+    PAUSED: 0,
+    RUNNING: 1,
+    MENU: 2,
+    GAMEOVER: 3,
+}
 
 
 export default class Game {
@@ -18,6 +26,9 @@ export default class Game {
     }
 
     start() {
+        this.gamestate = GAMESTATE.RUNNING;
+        this.display = new Display(this);
+
         this.ducks = [new Duck(this), new RedDuck(this), new BlueDuck(this)];
 
         this.input = new Input(this, document.querySelector('#canvas'));
@@ -96,9 +107,13 @@ export default class Game {
     draw() {
         this.dog.draw();
         this.duck.draw();
+
+        this.display.draw();
     }
 
     update(deltaTime) {
+        if (this.gamestate === GAMESTATE.PAUSED) return;
+
         if (this.gameMode === 1) {
             this.gameMode1();
         } else if (this.gameMode === 2) {
@@ -132,9 +147,16 @@ export default class Game {
             }
         }
     }
-}
 
-// Uniemożliwienie szybkich strzałów, odczekanie miedzy nimi ok 500ms
+    togglePause() {
+        if (this.gamestate === GAMESTATE.PAUSED) {
+            this.gamestate = GAMESTATE.RUNNING;
+        } else {
+            this.gamestate = GAMESTATE.PAUSED;
+        }
+
+    }
+}
 // Śmiech psa gdy jest gameover i game status: paused
 // Dodanie menu oraz stworzenie grafik
 
