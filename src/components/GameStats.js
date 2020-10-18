@@ -5,6 +5,7 @@ export default class GameStats {
 
         this.score = 0;
         this.bestScore = 0;
+        this.perfectBonusScore = 10000;
 
         this.shoot = 0;
 
@@ -18,7 +19,17 @@ export default class GameStats {
 
     }
 
-
+    changePerfectBonusScore() {
+        if (this.round < 11) {
+            this.perfectBonusScore = 10000;
+        } else if (this.round < 16) {
+            this.perfectBonusScore = 15000;
+        } else if (this.round < 21) {
+            this.perfectBonusScore = 20000;
+        } else {
+            this.perfectBonusScore = 30000;
+        }
+    }
 
     changeMissHits() {
         if (this.round < 11) {
@@ -35,13 +46,15 @@ export default class GameStats {
     }
 
     perfectBonus() {
-
-        // to do
+        this.score += this.perfectBonusScore;
+        // Musisz jeszcze dodać wyświetlanie komunikatu "Perfect Bonus" na canvasie
     }
 
 
     summaryRounds() {
-        console.log('Sprawdzenie przebiegu rundy czy gameOver czy perfectbonus czy kontynuacja')
+        if (this.correctHits.every(element => {return element === 1})) {
+            this.perfectBonus();
+        }
     }
 
     changePointsPerDuck() {
@@ -72,8 +85,11 @@ export default class GameStats {
     }
 
     update() {
+        this.changeDuckSpeed();
         this.changeMissHits();
         this.changePointsPerDuck();
+        this.changePerfectBonusScore()
+
         this.setBestScore();
     }
 }

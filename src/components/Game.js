@@ -56,10 +56,9 @@ export default class Game {
         this.dog.drawGrass = false;
 
         this.gameStats.currentSubRound = 0;
-
         this.gameStats.round++;
 
-        this.gameStats.changeDuckSpeed();
+        this.gameStats.update();
 
         this.runIntro();
         this.newSubRound();
@@ -88,6 +87,7 @@ export default class Game {
         if (!this.duck.beHit && this.duck.duckAlive && this.canFlyAway) {
             // console.log('Koniec strzałów');
             this.duck.flyAwayNow = true;
+            this.gameStats.correctHits[this.gameStats.currentSubRound - 1] = -1;
         }
     }
 
@@ -108,8 +108,6 @@ export default class Game {
         this.colission.update(this.duck);
         this.dog.update(deltaTime);
         this.duck.update(deltaTime);
-        this.gameStats.update();
-
 
         if (!this.dog.runIntro && this.respawn) {
             this.respawnDuck();
@@ -125,8 +123,8 @@ export default class Game {
             if (this.gameStats.currentSubRound !== 10) {
                 this.newSubRound();
             } else {
-                // New round after 10 sub rounds;
                 this.gameStats.summaryRounds();
+                // New round after 10 sub rounds;
                 this.newRound();
             }
         }
@@ -134,21 +132,20 @@ export default class Game {
 }
 
 // Pozostało zrobienie sprawdzania ile razy ptak nie został trafiony i określanie kiedy jest GameOver.
+// Uniemożliwienie szybkich strzałów, odczekanie miedzy nimi ok 500ms
+// Śmiech psa gdy jest gameover
+// Dodanie menu oraz stworzenie grafik
+
 // Dodanie perfect bonus
+// Dodanie kaczek w pasku na dole oraz zrobienie ich animacji, zmiana 0 w tablicy correctHits na -1 gdy kaczka nie zostanie trafiona
+// na podstawie tego określanie koloru kaczki w pasku
+
 // Czerwone tło gdy ptak odlatuje + komunikaty na canvasie
 
 // Ilość punktów za trafienie po zestrzeleniu kaczki wyświetlana w tle
 
 
 // Strzały graficznie na canvas aktualizowane
-// Uniemożliwienie szybkich strzałów, odczekanie miedzy nimi ok 500ms
 
-// Dodanie kaczek w pasku na dole oraz zrobienie ich animacji, zmiana 0 w tablicy correctHits na -1 gdy kaczka nie zostanie trafiona
-// na podstawie tego określanie koloru kaczki w pasku
-
-
-
-// Dodanie menu oraz stworzenie grafik
-// Śmiech psa gdy jest gameover
 // Konfiguracja trybu 2 kaczek (wtedy zachowanie psa gdy kaczki spadną!)
 // Dodanie dźwięków
