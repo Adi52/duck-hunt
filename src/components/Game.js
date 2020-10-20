@@ -26,7 +26,7 @@ export default class Game {
     }
 
     start() {
-        this.gamestate = GAMESTATE.RUNNING;
+        this.gamestate = GAMESTATE.MENU;
         this.display = new Display(this);
 
         this.ducks = [new Duck(this), new RedDuck(this), new BlueDuck(this)];
@@ -112,7 +112,8 @@ export default class Game {
     }
 
     update(deltaTime) {
-        if (this.gamestate === GAMESTATE.PAUSED) return;
+        if (this.gamestate === GAMESTATE.PAUSED ||
+            this.gamestate === GAMESTATE.MENU) return;
 
         if (this.gameMode === 1) {
             this.gameMode1();
@@ -157,8 +158,7 @@ export default class Game {
 
     }
 }
-// Śmiech psa gdy jest gameover i game status: paused
-// Dodanie menu oraz stworzenie grafik
+// Śmiech psa gdy jest gameover
 
 // Dodanie kaczek w pasku na dole oraz zrobienie ich animacji
 
@@ -171,3 +171,5 @@ export default class Game {
 
 // Konfiguracja trybu 2 kaczek (wtedy zachowanie psa gdy kaczki spadną!)
 // Dodanie dźwięków
+
+// Naprawienie błędu z wyświetlaniem trawy nad napisem paused

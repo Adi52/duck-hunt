@@ -1,4 +1,3 @@
-
 export default class Collision {
     constructor(game) {
         this.game = game;
@@ -15,7 +14,7 @@ export default class Collision {
     }
 
     update(duck) {
-        if(this.game.canShoot && this.game.input.limitShoot && this.hitTestPoint(duck.position.x, duck.position.y, duck.widthDuck, duck.heightDuck, this.input.mouseX, this.input.mouseY)) {
+        if (this.game.canShoot && this.game.input.limitShoot && this.hitTestPoint(duck.position.x, duck.position.y, duck.widthDuck, duck.heightDuck, this.input.mouseX, this.input.mouseY)) {
             duck.beHit = true;
 
             this.gameStats.score += this.game.duck.points;

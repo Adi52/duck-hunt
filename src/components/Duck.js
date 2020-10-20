@@ -1,4 +1,3 @@
-
 export default class Duck {
     constructor(game) {
         // game properties
@@ -12,8 +11,8 @@ export default class Duck {
         this.beHit = false;
         this.duckAlive = false;
         this.startRespawn = false;
-        this.directionX = (Math.random()*1.3) + 0.9;
-        this.directionY = (Math.random()*1.3) + 0.9;
+        this.directionX = (Math.random() * 1.3) + 0.9;
+        this.directionY = (Math.random() * 1.3) + 0.9;
         this.duckSpeed = 1;
         this.points = 500;
         this.position = {
@@ -45,7 +44,7 @@ export default class Duck {
 
     draw() {
         this.ctx.save();
-        this.ctx.translate(this.position.x + this.widthDuck/2, this.position.y + this.heightDuck/2);
+        this.ctx.translate(this.position.x + this.widthDuck / 2, this.position.y + this.heightDuck / 2);
 
         // If you will want change deegress when += pos.x is small or smth
         // if (this.angle) {
@@ -57,7 +56,7 @@ export default class Duck {
         }
 
 
-        this.ctx.translate(-(this.position.x + this.widthDuck/2), -(this.position.y + this.heightDuck/2));
+        this.ctx.translate(-(this.position.x + this.widthDuck / 2), -(this.position.y + this.heightDuck / 2));
 
         this.ctx.drawImage(
             this.ducksImage,
@@ -84,8 +83,7 @@ export default class Duck {
         this.ducksImage = this.ducksFlyUpImage;
         if (this.animationForward) {
             this.currentFrame += deltaTime / 100;
-        }
-        else {
+        } else {
             this.currentFrame -= deltaTime / 100;
         }
         // Change flag, now we can start animation dog from behind (3 frames 1->2->3->2->1->...)
@@ -99,7 +97,7 @@ export default class Duck {
     }
 
     beHitAnimation(deltaTime) {
-        this.counterBeHit += deltaTime/200;
+        this.counterBeHit += deltaTime / 200;
 
         if (this.counterBeHit < 6) {
             this.duckAlive = false;
@@ -112,7 +110,7 @@ export default class Duck {
     }
 
     fallAnimation(deltaTime) {
-        this.counter += deltaTime/200;
+        this.counter += deltaTime / 200;
 
         if (this.position.y > this.gameWidth) {
             this.beHit = false;
@@ -124,11 +122,11 @@ export default class Duck {
         if (Math.round(this.counter) % 2 === 0) this.currentFrame = 1;
         else this.currentFrame = 2;
 
-        this.position.y += deltaTime/3;
+        this.position.y += deltaTime / 3;
     }
 
     flyAway(deltaTime) {
-        this.position.y -= deltaTime/2;
+        this.position.y -= deltaTime / 2;
 
         // red sky
         this.ctx.fillStyle = 'rgba(207, 38, 8, 0.6)';
@@ -145,8 +143,8 @@ export default class Duck {
     }
 
     changePositionOfDuck(deltaTime) {
-        let changeXpos = deltaTime/6 * this.duckSpeed * this.directionX;
-        let changeYpos = deltaTime/6 * this.duckSpeed * this.directionY;
+        let changeXpos = deltaTime / 6 * this.duckSpeed * this.directionX;
+        let changeYpos = deltaTime / 6 * this.duckSpeed * this.directionY;
 
         let distance = (Math.abs(changeXpos) + Math.abs(changeYpos)) / 2;
 
@@ -225,8 +223,7 @@ export default class Duck {
 
             this.duckAlive = true;
             this.startRespawn = false;
-        }
-        else if (this.duckAlive) {
+        } else if (this.duckAlive) {
             this.flyUpAnimation(deltaTime);
             this.flyPath(deltaTime);
         }

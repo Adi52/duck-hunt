@@ -1,4 +1,3 @@
-
 export default class GameStats {
     constructor(game) {
         this.game = game;
@@ -53,7 +52,9 @@ export default class GameStats {
 
 
     summaryRounds() {
-        if (this.correctHits.every(element => {return element === 1})) {
+        if (this.correctHits.every(element => {
+            return element === 1
+        })) {
             // If player hit duck 10 times call perfect bonus
             this.perfectBonus();
         }

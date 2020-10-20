@@ -1,4 +1,3 @@
-
 export default class Dog {
     constructor(game) {
         // game properties
@@ -131,14 +130,14 @@ export default class Dog {
         }
 
         if (this.animationForward) {
-            this.currentFrame -= deltaTime/400;
+            this.currentFrame -= deltaTime / 400;
         } else {
-            this.currentFrame += deltaTime/400;
+            this.currentFrame += deltaTime / 400;
         }
     }
 
     laugh() {
-        this.position.x = this.gameWidth/2 - this.dogWidth;
+        this.position.x = this.gameWidth / 2 - this.dogWidth;
         this.position.y = this.gameHeight * 0.6;
         // this.position.y = this.gameHeight * 0.4;
         this.currentRow = 1;
@@ -155,7 +154,7 @@ export default class Dog {
     }
 
     laughAnimation(deltaTime) {
-        this.counter += deltaTime/200;
+        this.counter += deltaTime / 200;
 
         if (Math.round(this.counter) % 2 === 0) {
             this.currentFrame = 5;
@@ -188,8 +187,7 @@ export default class Dog {
 
     pickUpAnimation(deltaTime) {
 
-        if (this.position.y > this.gameHeight)
-        {
+        if (this.position.y > this.gameHeight) {
             this.runPickUpAnimation = false;
             this.runLaughAnimation = false;
 
@@ -197,12 +195,12 @@ export default class Dog {
             this.canStartNextSubRound = true;
             this.pickUpDirection = -this.pickUpDirection;
 
-        } else if (this.position.y < this.gameHeight*0.45) {
+        } else if (this.position.y < this.gameHeight * 0.45) {
 
-            this.pickUpDirection = -this.pickUpDirection ;
+            this.pickUpDirection = -this.pickUpDirection;
         }
 
-        this.position.y -= deltaTime/5 * this.pickUpDirection;
+        this.position.y -= deltaTime / 5 * this.pickUpDirection;
     }
 
     intro(deltaTime) {
