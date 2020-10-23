@@ -7,6 +7,8 @@ export default class Display {
 
         this.logoImage = document.querySelector('#logo');
         this.shotImage = document.querySelector('#shot');
+        this.subroundsDuckWhite = document.querySelector('#subround_duck_white');
+        this.subroundsDuckRed = document.querySelector('#subround_duck_red');
     }
 
     menuScreen() {
@@ -46,7 +48,11 @@ export default class Display {
     showNumberRound() {
         this.ctx.font = "18px 'Press Start 2P'";
         this.ctx.fillStyle = '#47dd24';
-        this.ctx.fillText(`R=${this.game.gameStats.round}`, 73.1, 598.5);
+
+        let round = "00" + this.game.gameStats.round;
+        round = round.substr(round.length-2);
+
+        this.ctx.fillText('R=' + round, 73.1, 598.5);
     }
 
     showScore() {
@@ -66,6 +72,16 @@ export default class Display {
         }
     }
 
+    showSubRoundsScore() {
+        this.game.gameStats.correctHits.forEach((hit, index) => {
+            if (hit === -1 || hit === 0) {
+                this.ctx.drawImage(this.subroundsDuckWhite, 274 + (index * 25), 625);
+            } else {
+                this.ctx.drawImage(this.subroundsDuckRed, 274 + (index * 25), 625);
+            }
+        })
+    }
+
     draw() {
         if (!this.game.gamestate) {
             // if paused
@@ -77,6 +93,7 @@ export default class Display {
             this.showNumberRound();
             this.showScore();
             this.showAvailableShoots();
+            this.showSubRoundsScore();
         }
 
     }
