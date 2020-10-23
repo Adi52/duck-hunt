@@ -42,6 +42,24 @@ export default class Display {
         this.ctx.fillText('Paused', this.gameWidth / 2, this.gameHeight / 2);
     }
 
+    showNumberRound() {
+        this.ctx.font = "18px 'Press Start 2P'";
+        this.ctx.fillStyle = '#47dd24';
+        this.ctx.fillText(`R=${this.game.gameStats.round}`, 73.1, 598.5);
+    }
+
+    showScore() {
+        // Thanks it we can display score in format 'SSSSSS'
+        let score = "000000" + this.game.gameStats.score;
+        score = score.substr(score.length-6);
+
+        this.ctx.font = "22px 'Press Start 2P'";
+        this.ctx.fillStyle = 'white';
+        this.ctx.fillText(score, 582, 647);
+        this.ctx.fillText('SCORE', 605, 672);
+
+    }
+
     draw() {
         if (!this.game.gamestate) {
             // if paused
@@ -49,6 +67,9 @@ export default class Display {
             this.pausedScreen();
         } else if (this.game.gamestate === 2) {
             this.menuScreen();
+        } else {
+            this.showNumberRound();
+            this.showScore();
         }
 
     }

@@ -10,7 +10,6 @@ export default class GameStats {
         this.missHits = 0;
 
         this.correctHits = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-        this.availableSubRounds = this.correctHits.length;
 
         this.missAvailable = 5;
 
@@ -67,6 +66,7 @@ export default class GameStats {
 
         if (this.missHits >= this.missAvailable) {
             console.log('GAME OVER!');
+            this.game.gamestate = 3; // game over
         }
     }
 

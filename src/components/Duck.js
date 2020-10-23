@@ -77,6 +77,7 @@ export default class Duck {
     respawn() {
         this.position.y = this.gameHeight * 0.6 - 20;
         this.position.x = (Math.random() * 600) + 50;
+        this.directionY = (Math.random() * 1.3) + 0.9;
     }
 
     flyUpAnimation(deltaTime) {

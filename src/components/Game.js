@@ -23,10 +23,15 @@ export default class Game {
         this.ctx = ctx;
 
         this.gameMode = 1; // 1 or 2 ducks
+        this.grassImage = document.querySelector('#grass');
+
     }
 
     start() {
-        this.gamestate = GAMESTATE.MENU;
+        // this.gamestate = GAMESTATE.MENU;
+        // do testów:
+        this.gamestate = GAMESTATE.RUNNING;
+
         this.display = new Display(this);
 
         this.ducks = [new Duck(this), new RedDuck(this), new BlueDuck(this)];
@@ -62,7 +67,6 @@ export default class Game {
     }
 
     newRound() {
-        console.log(`Round: ${this.gameStats.round}`);
         this.canShoot = false;
         this.dog.drawGrass = false;
 
@@ -81,7 +85,6 @@ export default class Game {
         this.dog.resetPropertiesAfterRound();
         this.duck.wholeDistanceTraveled = 0;
 
-        console.log(`Score: ${this.gameStats.score}`);
         // Generate random color duck
         this.duck = this.ducks[Math.floor(Math.random() * 3)];
         this.dog.canStartNextSubRound = false;
@@ -107,6 +110,10 @@ export default class Game {
     draw() {
         this.dog.draw();
         this.duck.draw();
+
+        if (this.dog.drawGrass) {
+            this.ctx.drawImage(this.grassImage, 0, 0, this.gameWidth, this.gameHeight);
+        }
 
         this.display.draw();
     }
@@ -166,10 +173,11 @@ export default class Game {
 
 // Ilość punktów za trafienie po zestrzeleniu kaczki wyświetlana w tle
 
-
 // Strzały graficznie na canvas aktualizowane
 
 // Konfiguracja trybu 2 kaczek (wtedy zachowanie psa gdy kaczki spadną!)
 // Dodanie dźwięków
 
 // Naprawienie błędu z wyświetlaniem trawy nad napisem paused
+
+// Zapisywanie best score w ciasteczkach

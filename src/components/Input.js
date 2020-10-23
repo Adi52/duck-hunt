@@ -12,6 +12,8 @@ export default class Input {
                 this.mouseX = event.clientX - rect.left;
                 this.mouseY = event.clientY - rect.top;
 
+                // console.log(this.mouseX, this.mouseY);
+
                 if (game.canShoot && this.limitShoot) {
                     this.counter = 0;
                     game.gameStats.shoot++;

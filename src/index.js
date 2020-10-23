@@ -28,9 +28,9 @@ function gameLoop(timestamp) {
     game.update(deltaTime);
     game.draw();
 
-    if (game.dog.drawGrass) {
-        ctx.drawImage(grassImage, 0, 0, GAME_WIDTH, GAME_HEIGHT);
-    }
+    // if (game.dog.drawGrass) {
+    //     ctx.drawImage(grassImage, 0, 0, GAME_WIDTH, GAME_HEIGHT);
+    // }
 
     requestAnimationFrame(gameLoop);
 }
