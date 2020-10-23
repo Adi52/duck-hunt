@@ -6,6 +6,7 @@ export default class Display {
         this.ctx = game.ctx;
 
         this.logoImage = document.querySelector('#logo');
+        this.shotImage = document.querySelector('#shot');
     }
 
     menuScreen() {
@@ -56,8 +57,13 @@ export default class Display {
         this.ctx.font = "22px 'Press Start 2P'";
         this.ctx.fillStyle = 'white';
         this.ctx.fillText(score, 582, 647);
-        this.ctx.fillText('SCORE', 605, 672);
+        this.ctx.fillText('SCORE', 603, 672);
+    }
 
+    showAvailableShoots() {
+        for (let i = 0; i < 3 - this.game.gameStats.shoot; i++) {
+            this.ctx.drawImage(this.shotImage, 78 + (i * 22), 625);
+        }
     }
 
     draw() {
@@ -70,6 +76,7 @@ export default class Display {
         } else {
             this.showNumberRound();
             this.showScore();
+            this.showAvailableShoots();
         }
 
     }
