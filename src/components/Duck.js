@@ -124,6 +124,8 @@ export default class Duck {
         else this.currentFrame = 2;
 
         this.position.y += deltaTime / 3;
+
+        this.game.display.displayPointsForDuck(this.game.input.mouseX, this.game.input.mouseY);
     }
 
     flyAway(deltaTime) {

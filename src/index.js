@@ -18,21 +18,21 @@ game.start();
 let lastTime = 0;
 
 
-if (!document.hidden) {
-    function gameLoop(timestamp) {
-        let deltaTime = timestamp - lastTime;
-        lastTime = timestamp;
-        ctx.drawImage(background_game_image, 0, 0, GAME_WIDTH, GAME_HEIGHT);
+
+function gameLoop(timestamp) {
+    let deltaTime = timestamp - lastTime;
+    lastTime = timestamp;
+    ctx.drawImage(background_game_image, 0, 0, GAME_WIDTH, GAME_HEIGHT);
 
 
-        game.update(deltaTime);
-        game.draw();
+    game.update(deltaTime);
+    game.draw();
 
-        // if (game.dog.drawGrass) {
-        //     ctx.drawImage(grassImage, 0, 0, GAME_WIDTH, GAME_HEIGHT);
-        // }
+    // if (game.dog.drawGrass) {
+    //     ctx.drawImage(grassImage, 0, 0, GAME_WIDTH, GAME_HEIGHT);
+    // }
 
-        requestAnimationFrame(gameLoop);
-    }
-    gameLoop(0);
+    requestAnimationFrame(gameLoop);
 }
+gameLoop(0);
+

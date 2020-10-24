@@ -11,6 +11,9 @@ export default class Display {
         this.subroundsDuckRed = document.querySelector('#subround_duck_red');
         this.smallButton = document.querySelector('#small_button');
         this.bigButton = document.querySelector('#big_button');
+
+        this.posXMouseWhenHitDuck = null;
+        this.posYMouseWhenHitDuck = null;
     }
 
     menuScreen() {
@@ -78,6 +81,12 @@ export default class Display {
         this.drawSmallButton('PAUSED');
     }
 
+    displayPointsForDuck() {
+        this.ctx.font = "22px 'Teko'";
+        this.ctx.fillStyle = 'white';
+        this.ctx.textAlign = 'center';
+        this.ctx.fillText(this.game.duck.points, this.posXMouseWhenHitDuck + 25, this.posYMouseWhenHitDuck + 40);
+    }
 
     showNumberRound() {
         this.ctx.font = "18px 'Press Start 2P'";

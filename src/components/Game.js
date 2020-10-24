@@ -191,8 +191,6 @@ export default class Game {
 }
 // Śmiech psa gdy jest gameover
 
-// komunikaty na canvasie (game over, paused, perfect)
-
 // Ilość punktów za trafienie po zestrzeleniu kaczki wyświetlana w tle
 
 // Konfiguracja trybu 2 kaczek (wtedy zachowanie psa gdy kaczki spadną!)
