@@ -9,6 +9,8 @@ export default class Display {
         this.shotImage = document.querySelector('#shot');
         this.subroundsDuckWhite = document.querySelector('#subround_duck_white');
         this.subroundsDuckRed = document.querySelector('#subround_duck_red');
+        this.smallButton = document.querySelector('#small_button');
+        this.bigButton = document.querySelector('#big_button');
     }
 
     menuScreen() {
@@ -52,7 +54,7 @@ export default class Display {
         let round = "00" + this.game.gameStats.round;
         round = round.substr(round.length-2);
 
-        this.ctx.fillText('R=' + round, 73.1, 598.5);
+        this.ctx.fillText('R=' + round, 109, 598.5);
     }
 
     showScore() {
@@ -62,8 +64,8 @@ export default class Display {
 
         this.ctx.font = "22px 'Press Start 2P'";
         this.ctx.fillStyle = 'white';
-        this.ctx.fillText(score, 582, 647);
-        this.ctx.fillText('SCORE', 603, 672);
+        this.ctx.fillText(score, 647, 647);
+        this.ctx.fillText('SCORE', 658, 672);
     }
 
     showAvailableShoots() {
@@ -78,11 +80,34 @@ export default class Display {
                 this.ctx.drawImage(this.subroundsDuckWhite, 274 + (index * 25), 625);
             } else if (hit === 1) {
                 this.ctx.drawImage(this.subroundsDuckRed, 274 + (index * 25), 625);
-            } else {
-                // this.ctx.drawImage(this.subroundsDuckBlack, 274 + (index * 25), 625);
-                return;
             }
         })
+    }
+
+    newRoundButton() {
+        this.ctx.drawImage(
+            this.bigButton,
+            this.gameWidth/2 - this.bigButton.width/2,
+            this.gameHeight * 0.3
+        );
+        this.ctx.font = "22px 'Press Start 2P'";
+        this.ctx.textAlign = 'center';
+        this.ctx.fillStyle = 'white';
+        this.ctx.fillText('ROUND',
+            this.gameWidth/2,
+            this.gameHeight * 0.36);
+
+        this.ctx.fillText(this.game.gameStats.round,
+            this.gameWidth/2,
+            this.gameHeight * 0.41);
+    }
+
+    perfectButton() {
+
+    }
+
+    flyAwayButton() {
+
     }
 
     draw() {
@@ -93,6 +118,9 @@ export default class Display {
         } else if (this.game.gamestate === 2) {
             this.menuScreen();
         } else {
+            if (this.displayCurrentRound) {
+                this.newRoundButton();
+            }
             this.showNumberRound();
             this.showScore();
             this.showAvailableShoots();

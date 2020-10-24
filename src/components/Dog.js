@@ -207,6 +207,8 @@ export default class Dog {
         if (this.position.x > 100 && this.sniffFlag) {
             // here dog pass tree and start sniff
             this.sniff(deltaTime);
+            // stop display Round # button.
+            this.game.display.displayCurrentRound = false;
         } else if (this.position.x > 250) {
             this.sniff(deltaTime, true)
         } else {

@@ -69,6 +69,8 @@ export default class Game {
     newRound() {
         this.canShoot = false;
         this.dog.drawGrass = false;
+        this.display.displayCurrentRound = true;
+
 
         this.gameStats.update();
 
@@ -167,8 +169,6 @@ export default class Game {
     }
 }
 // Śmiech psa gdy jest gameover
-
-// *Dodanie kaczek w pasku na dole * (done) oraz zrobienie ich animacji
 
 // komunikaty na canvasie (game over, paused, perfect)
 

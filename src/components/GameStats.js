@@ -102,7 +102,6 @@ export default class GameStats {
         this.changeMissHits();
         this.changePointsPerDuck();
         this.changePerfectBonusScore()
-
         this.setBestScore();
     }
 }
