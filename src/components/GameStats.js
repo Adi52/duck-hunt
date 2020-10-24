@@ -45,8 +45,10 @@ export default class GameStats {
     }
 
     perfectBonus() {
-        this.score += this.perfectBonusScore;
-        // Musisz jeszcze dodać wyświetlanie komunikatu "Perfect Bonus" na canvasie
+        if (!this.game.perfectRound) {
+            this.score += this.perfectBonusScore;
+            this.game.perfectRound = true;
+        }
     }
 
 

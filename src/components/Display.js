@@ -37,15 +37,47 @@ export default class Display {
         this.ctx.fillText('© 2020 Adi52', this.gameWidth / 2, this.gameHeight * 0.86);
     }
 
+    drawBigButton(string1, string2) {
+        this.ctx.drawImage(
+            this.bigButton,
+            this.gameWidth/2 - this.bigButton.width/2,
+            this.gameHeight * 0.3
+        );
+        this.ctx.font = "22px 'Press Start 2P'";
+        this.ctx.textAlign = 'center';
+        this.ctx.fillStyle = 'white';
+        if (string1 === 'PERFECT!!') {
+            this.ctx.font = "14px 'Press Start 2P'";
+        }
+        this.ctx.fillText(string1,
+            this.gameWidth/2,
+            this.gameHeight * 0.36);
+        this.ctx.font = "22px 'Press Start 2P'";
+        this.ctx.fillText(string2,
+            this.gameWidth/2,
+            this.gameHeight * 0.41);
+    }
+
+    drawSmallButton(string) {
+        this.ctx.drawImage(
+            this.smallButton,
+            this.gameWidth/2 - this.smallButton.width/2,
+            this.gameHeight * 0.34
+        );
+        this.ctx.font = "22px 'Press Start 2P'";
+        this.ctx.fillStyle = 'white';
+        this.ctx.fillText(string,
+            this.gameWidth/2,
+            this.gameHeight * 0.391);
+    }
+
     pausedScreen() {
         this.ctx.rect(0, 0, this.gameWidth, this.gameHeight);
         this.ctx.fillStyle = "rgba(0,0,0,0.5)";
         this.ctx.fill();
-        this.ctx.font = "75px 'Press Start 2P'";
-        this.ctx.fillStyle = 'white';
-        this.ctx.textAlign = 'center';
-        this.ctx.fillText('Paused', this.gameWidth / 2, this.gameHeight / 2);
+        this.drawSmallButton('PAUSED');
     }
+
 
     showNumberRound() {
         this.ctx.font = "18px 'Press Start 2P'";
@@ -85,56 +117,32 @@ export default class Display {
     }
 
     newRoundButton() {
-        this.ctx.drawImage(
-            this.bigButton,
-            this.gameWidth/2 - this.bigButton.width/2,
-            this.gameHeight * 0.3
-        );
-        this.ctx.font = "22px 'Press Start 2P'";
-        this.ctx.textAlign = 'center';
-        this.ctx.fillStyle = 'white';
-        this.ctx.fillText('ROUND',
-            this.gameWidth/2,
-            this.gameHeight * 0.36);
-
-        this.ctx.fillText(this.game.gameStats.round,
-            this.gameWidth/2,
-            this.gameHeight * 0.41);
+        this.drawBigButton('ROUND', this.game.gameStats.round)
     }
 
     perfectButton() {
-
+        this.drawBigButton('PERFECT!!', this.game.gameStats.perfectBonusScore)
     }
 
     flyAwayButton() {
-        this.ctx.drawImage(
-            this.smallButton,
-            this.gameWidth/2 - this.smallButton.width/2,
-            this.gameHeight * 0.3
-        );
-        this.ctx.font = "22px 'Press Start 2P'";
-        this.ctx.fillStyle = 'white';
-        this.ctx.fillText('FLY AWAY',
-            this.gameWidth/2,
-            this.gameHeight * 0.355);
+        this.drawSmallButton('FLY AWAY');
     }
 
     draw() {
-        if (!this.game.gamestate) {
-            // if paused
-            // this.menuScreen();
-            this.pausedScreen();
-        } else if (this.game.gamestate === 2) {
+        if (this.game.gamestate === 2) {
             this.menuScreen();
         } else {
-            if (this.displayCurrentRound) {
-                this.newRoundButton();
-            }
             this.showNumberRound();
             this.showScore();
             this.showAvailableShoots();
             this.showSubRoundsScore();
+            if (!this.game.gamestate) {
+                // if paused
+                this.pausedScreen();
+            }
+            else if (this.displayCurrentRound) {
+                this.newRoundButton();
+            }
         }
-
     }
 }

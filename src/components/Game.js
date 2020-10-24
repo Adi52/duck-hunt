@@ -30,8 +30,9 @@ export default class Game {
     start() {
         // this.gamestate = GAMESTATE.MENU;
         // do testów:
-        this.gamestate = GAMESTATE.RUNNING;
 
+        this.gamestate = GAMESTATE.RUNNING;
+        this.timer = 0;
         this.display = new Display(this);
 
         this.ducks = [new Duck(this), new RedDuck(this), new BlueDuck(this)];
@@ -67,15 +68,20 @@ export default class Game {
     }
 
     newRound() {
+        this.timer = 0;
+
         this.canShoot = false;
         this.dog.drawGrass = false;
         this.display.displayCurrentRound = true;
+
+        this.perfectRound = false;
 
 
         this.gameStats.update();
 
         this.gameStats.correctHits = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         this.gameStats.currentSubRound = 0;
+
         this.gameStats.missHits = 0;
 
         this.gameStats.round++;
@@ -107,6 +113,15 @@ export default class Game {
             // console.log('Koniec strzałów');
             this.duck.flyAwayNow = true;
             this.gameStats.correctHits[this.gameStats.currentSubRound - 1] = -1;
+        }
+    }
+
+    showPerfectButton(deltaTime) {
+        this.timer += deltaTime/16;
+
+        this.display.perfectButton();
+        if (this.timer > 150) {
+            this.newRound();
         }
     }
 
@@ -153,6 +168,12 @@ export default class Game {
                 this.newSubRound();
             } else {
                 this.gameStats.summaryRounds();
+
+                if (this.perfectRound) {
+                    this.showPerfectButton(deltaTime);
+                    return;
+                }
+
                 // New round after 10 sub rounds;
                 this.newRound();
             }
