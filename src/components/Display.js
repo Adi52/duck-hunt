@@ -107,7 +107,16 @@ export default class Display {
     }
 
     flyAwayButton() {
-
+        this.ctx.drawImage(
+            this.smallButton,
+            this.gameWidth/2 - this.smallButton.width/2,
+            this.gameHeight * 0.3
+        );
+        this.ctx.font = "22px 'Press Start 2P'";
+        this.ctx.fillStyle = 'white';
+        this.ctx.fillText('FLY AWAY',
+            this.gameWidth/2,
+            this.gameHeight * 0.355);
     }
 
     draw() {
@@ -128,10 +137,4 @@ export default class Display {
         }
 
     }
-
-    update() {
-
-    }
-
-
 }

@@ -132,6 +132,7 @@ export default class Duck {
         // red sky
         this.ctx.fillStyle = 'rgba(207, 38, 8, 0.6)';
         this.ctx.fillRect(0, 0, this.gameWidth, this.gameHeight);
+        this.game.display.flyAwayButton();
 
         if (this.position.y < -100) {
             this.flyAwayNow = false;
