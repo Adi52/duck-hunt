@@ -72,6 +72,7 @@ export default class Game {
 
         this.gameStats.update();
 
+        this.gameStats.correctHits = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         this.gameStats.currentSubRound = 0;
         this.gameStats.missHits = 0;
 
@@ -167,17 +168,13 @@ export default class Game {
 }
 // Śmiech psa gdy jest gameover
 
-// Dodanie kaczek w pasku na dole oraz zrobienie ich animacji
+// *Dodanie kaczek w pasku na dole * (done) oraz zrobienie ich animacji
 
-// komunikaty na canvasie
+// komunikaty na canvasie (game over, paused, perfect)
 
 // Ilość punktów za trafienie po zestrzeleniu kaczki wyświetlana w tle
 
-// Strzały graficznie na canvas aktualizowane
-
 // Konfiguracja trybu 2 kaczek (wtedy zachowanie psa gdy kaczki spadną!)
 // Dodanie dźwięków
-
-// Naprawienie błędu z wyświetlaniem trawy nad napisem paused
 
 // Zapisywanie best score w ciasteczkach

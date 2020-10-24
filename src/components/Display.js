@@ -76,8 +76,11 @@ export default class Display {
         this.game.gameStats.correctHits.forEach((hit, index) => {
             if (hit === -1 || hit === 0) {
                 this.ctx.drawImage(this.subroundsDuckWhite, 274 + (index * 25), 625);
-            } else {
+            } else if (hit === 1) {
                 this.ctx.drawImage(this.subroundsDuckRed, 274 + (index * 25), 625);
+            } else {
+                // this.ctx.drawImage(this.subroundsDuckBlack, 274 + (index * 25), 625);
+                return;
             }
         })
     }

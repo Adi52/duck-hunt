@@ -137,9 +137,18 @@ export default class Duck {
             this.flyAwayNow = false;
             this.game.canFlyAway = false;
 
-            // this.game.dog.canStartNextSubRound = true;
-
             this.game.dog.laugh();
+        }
+    }
+
+    blinkCurrentSubRoundDuckInBottomBar(deltaTime) {
+        if (this.game.dog.runLaughAnimation || this.flyAwayNow || !this.game.canShoot) return;
+        this.counter += deltaTime / 400
+        if (Math.round(this.counter) % 2 === 0) {
+            this.game.gameStats.correctHits[this.game.gameStats.currentSubRound - 1] = 0;
+        }
+        else {
+            this.game.gameStats.correctHits[this.game.gameStats.currentSubRound - 1] = 2;
         }
     }
 
@@ -203,12 +212,13 @@ export default class Duck {
     }
 
     flyPath(deltaTime) {
-        this.changePositionOfDuck(deltaTime)
+        this.changePositionOfDuck(deltaTime);
         this.detectCollisionWithWalls();
         this.randomDuckPath();
         if (this.wholeDistanceTraveled > 2500) {
             this.game.loseSubRound();
         }
+        this.blinkCurrentSubRoundDuckInBottomBar(deltaTime);
     }
 
     update(deltaTime) {
