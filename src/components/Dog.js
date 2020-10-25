@@ -14,7 +14,7 @@ export default class Dog {
 
         // dog properties
         this.position = {
-            x: -155,
+            x: -50,
             y: game.gameHeight * 0.6,
         }
 
@@ -47,7 +47,7 @@ export default class Dog {
 
         this.sniffFlag = true;
 
-        this.position.x = -155;
+        this.position.x = -50;
         this.position.y = this.gameHeight * 0.6;
 
         this.correction = 0;
@@ -95,7 +95,7 @@ export default class Dog {
             // Stop display intro after jump
             this.runIntro = false;
             this.correction = 0;
-        } else if (this.sniffTimer > 1500) {
+        } else if (this.sniffTimer > 1000) {
             // Wait 1500ms after sniff
             this.currentRow = 1;
             this.correction = -8.5;
@@ -111,8 +111,7 @@ export default class Dog {
     }
 
     sniff(deltaTime, jump = false) {
-        // 850 cus we need 2 sniffs (1 sniff = 400ms);
-        if (this.sniffTimer > 850) {
+        if (this.sniffTimer > 800) {
             if (jump) {
                 this.jump(deltaTime);
                 return;
@@ -218,7 +217,7 @@ export default class Dog {
         } else {
             // here we can set speed of the dog (x)
             this.walking(deltaTime);
-            this.position.x += 15 / deltaTime;
+            this.position.x += 20 / deltaTime;
         }
     }
 
