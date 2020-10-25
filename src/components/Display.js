@@ -20,7 +20,7 @@ export default class Display {
         this.ctx.rect(0, 0, this.gameWidth, this.gameHeight);
         this.ctx.fillStyle = "rgba(0,0,0,1)";
         this.ctx.fill();
-        this.ctx.font = "20px 'Press Start 2P'";
+        this.ctx.font = "30px 'Press Start 2P'";
         this.ctx.fillStyle = '#ff9c39';
         this.ctx.textAlign = 'center';
 
@@ -30,8 +30,9 @@ export default class Display {
             this.gameHeight * 0.1
         );
 
-        this.ctx.fillText('GAME A    1 DUCK ', this.gameWidth / 2, this.gameHeight * 0.6);
-        this.ctx.fillText('GAME B    2 DUCKS', this.gameWidth / 2, this.gameHeight * 0.66);
+        this.ctx.fillText('START GAME', this.gameWidth / 2, this.gameHeight * 0.66);
+        this.ctx.font = "20px 'Press Start 2P'";
+
 
         this.ctx.fillStyle = '#47dd24';
         this.ctx.fillText(`BEST SCORE  =  ${this.game.gameStats.bestScore}`, this.gameWidth / 2, this.gameHeight * 0.8);

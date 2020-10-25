@@ -22,7 +22,6 @@ export default class Game {
         this.gameHeight = gameHeight;
         this.ctx = ctx;
 
-        this.gameMode = 1; // 1 or 2 ducks
         this.grassImage = document.querySelector('#grass');
         this.gamestate = GAMESTATE.MENU;
 
@@ -40,8 +39,6 @@ export default class Game {
 
         this.ducks = [new Duck(this), new RedDuck(this), new BlueDuck(this)];
 
-
-
         this.dog = new Dog(this);
         this.duck = this.ducks[0];
 
@@ -56,17 +53,6 @@ export default class Game {
         this.duck.startRespawn = true;
     }
 
-    gameMode1() {
-        if (this.duck.runDogPickUp) {
-            this.dog.pickUp(1, this.duck.position.x);
-            this.duck.runDogPickUp = false;
-        }
-    }
-
-    gameMode2() {
-
-    }
-
     newRound() {
         this.timer = 0;
 
@@ -79,11 +65,8 @@ export default class Game {
 
         this.gameStats.update();
 
-        // this.gameStats.correctHits = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-        // this.gameStats.currentSubRound = 0;
-
-        this.gameStats.correctHits = [1, 1, 1, -1, -1, -1, -1, -1, -1, 0];
-        this.gameStats.currentSubRound = 9;
+        this.gameStats.correctHits = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        this.gameStats.currentSubRound = 0;
 
         this.gameStats.missHits = 0;
 
@@ -158,12 +141,9 @@ export default class Game {
             return;
         }
 
-        if (this.gameMode === 1) {
-            this.gameMode1();
-        } else if (this.gameMode === 2) {
-            this.gameMode2();
-        } else {
-            return;
+        if (this.duck.runDogPickUp) {
+            this.dog.pickUp(1, this.duck.position.x);
+            this.duck.runDogPickUp = false;
         }
 
         this.colission.update(this.duck);
@@ -208,7 +188,7 @@ export default class Game {
     togglePause() {
         if (this.gamestate === GAMESTATE.PAUSED) {
             this.gamestate = GAMESTATE.RUNNING;
-        } else {
+        } else if (this.gamestate !== GAMESTATE.MENU) {
             this.gamestate = GAMESTATE.PAUSED;
         }
 

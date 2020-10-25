@@ -3,7 +3,7 @@ export default class Input {
         this.game = game;
         canvas.addEventListener("mousedown", (event) => {
             if (game.gamestate === 2) {
-                this.menuOptionClicked();
+                this.menuStartGame();
             }
 
             if (game.gamestate) {
@@ -29,23 +29,13 @@ export default class Input {
         this.counter = 0;
     }
 
-    menuOptionClicked() {
-        if (this.game.input.mouseX > 217 && this.game.input.mouseX < 525 &&
-            this.game.input.mouseY > 415 && this.game.input.mouseY < 432) {
+    menuStartGame() {
+        if (this.game.input.mouseX > 236 && this.game.input.mouseX < 531 &&
+            this.game.input.mouseY > 447 && this.game.input.mouseY < 473) {
             this.game.gamestate = 1;
-            this.game.gameMode = 1;
             this.game.start();
             this.game.newRound();
-
         }
-        if (this.game.input.mouseX > 217 && this.game.input.mouseX < 553 &&
-            this.game.input.mouseY > 458 && this.game.input.mouseY < 475) {
-            this.game.gamestate = 1;
-            this.game.gameMode = 2;
-            this.game.newRound();
-
-        }
-
     }
 
     limitClick(deltaTime) {
