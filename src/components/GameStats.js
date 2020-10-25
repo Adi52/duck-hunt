@@ -53,6 +53,7 @@ export default class GameStats {
 
 
     summaryRounds() {
+        this.checked = true;
         if (this.correctHits.every(element => {
             return element === 1
         })) {

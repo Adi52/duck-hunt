@@ -79,8 +79,11 @@ export default class Game {
 
         this.gameStats.update();
 
-        this.gameStats.correctHits = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-        this.gameStats.currentSubRound = 0;
+        // this.gameStats.correctHits = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        // this.gameStats.currentSubRound = 0;
+
+        this.gameStats.correctHits = [1, 1, 1, -1, -1, -1, -1, -1, -1, 0];
+        this.gameStats.currentSubRound = 9;
 
         this.gameStats.missHits = 0;
 
@@ -110,7 +113,6 @@ export default class Game {
         this.canShoot = false;
         // lose sub round
         if (!this.duck.beHit && this.duck.duckAlive && this.canFlyAway) {
-            // console.log('Koniec strzałów');
             this.duck.flyAwayNow = true;
             this.gameStats.correctHits[this.gameStats.currentSubRound - 1] = -1;
         }
@@ -186,15 +188,17 @@ export default class Game {
                 this.newSubRound();
             } else {
                 // Check game stats (game over/perfect round/next round)
-                this.gameStats.summaryRounds();
+                if (!this.gameStats.checked) {
+                    this.gameStats.summaryRounds();
+
+                }
                 // Add perfect bonus if round is perfect
                 if (this.perfectRound) {
                     this.showPerfectButton(deltaTime);
                     return;
                 }
-
                 // New round after 10 sub rounds;
-                if (!this.gamestate === GAMESTATE.GAMEOVER) {
+                if (!(this.gamestate === GAMESTATE.GAMEOVER)) {
                     this.newRound();
                 }
             }
