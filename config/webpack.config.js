@@ -31,6 +31,20 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'sass-loader']
       },
       {
+        test: /\.(mp3|wav)$/,
+      use: [
+        {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: '../audio/',
+            publicPath: 'audio/',
+            useRelativePaths: true
+          }
+        }
+        ]
+      },
+      {
         test: /\.(jpg|png|svg|gif|jpeg)$/,
         use: 'file-loader',
       },

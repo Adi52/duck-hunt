@@ -1,5 +1,6 @@
 import Input from "./Input";
 import Display from "./Display";
+import Sounds from "./Sounds";
 import Collision from "./Collision";
 import GameStats from "./GameStats";
 
@@ -29,7 +30,7 @@ export default class Game {
         this.gameStats = new GameStats(this);
         this.colission = new Collision(this);
         this.display = new Display(this);
-
+        this.sounds = new Sounds();
     }
 
     start() {
@@ -46,6 +47,7 @@ export default class Game {
     }
 
     runIntro() {
+        this.sounds.intro.play();
         this.dog.runIntro = true;
     }
 
@@ -122,8 +124,15 @@ export default class Game {
     }
 
     update(deltaTime) {
-        if (this.gamestate === GAMESTATE.PAUSED ||
-            this.gamestate === GAMESTATE.MENU) {
+        if (this.gamestate === GAMESTATE.PAUSED) {
+            return;
+        }
+
+        if (this.gamestate === GAMESTATE.MENU) {
+            if (this.runStartSound) {
+                this.sounds.start.play();
+                this.runStartSound = false;
+            }
             return;
         }
 
@@ -195,7 +204,7 @@ export default class Game {
     }
 }
 
-// Konfiguracja trybu 2 kaczek (wtedy zachowanie psa gdy kaczki spadną!)
 // Dodanie dźwięków
 
+// Poprawienie lotu kaczki, usunięcie błędów
 // Zapisywanie best score w ciasteczkach

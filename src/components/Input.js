@@ -15,6 +15,7 @@ export default class Input {
                 // console.log(this.mouseX, this.mouseY);
 
                 if (game.canShoot && this.limitShoot) {
+                    this.game.sounds.gunShot.play();
                     this.counter = 0;
                     game.gameStats.shoot++;
                 }
