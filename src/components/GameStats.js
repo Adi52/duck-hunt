@@ -67,7 +67,6 @@ export default class GameStats {
         })
 
         if (this.missHits >= this.missAvailable) {
-            console.log('GAME OVER!');
             this.game.gamestate = 3; // game over
         }
     }

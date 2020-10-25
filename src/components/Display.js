@@ -137,6 +137,10 @@ export default class Display {
         this.drawSmallButton('FLY AWAY');
     }
 
+    gameOverButton() {
+        this.drawBigButton('GAME', 'OVER');
+    }
+
     draw() {
         if (this.game.gamestate === 2) {
             this.menuScreen();
@@ -145,6 +149,9 @@ export default class Display {
             this.showScore();
             this.showAvailableShoots();
             this.showSubRoundsScore();
+            if (this.game.gamestate === 3) {
+                this.gameOverButton();
+            }
             if (!this.game.gamestate) {
                 // if paused
                 this.pausedScreen();

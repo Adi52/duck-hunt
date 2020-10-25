@@ -24,14 +24,12 @@ export default class Game {
 
         this.gameMode = 1; // 1 or 2 ducks
         this.grassImage = document.querySelector('#grass');
-
+        this.gamestate = GAMESTATE.MENU;
     }
 
     start() {
-        // this.gamestate = GAMESTATE.MENU;
-        // do testów:
+        this.runLaugh = true;
 
-        this.gamestate = GAMESTATE.RUNNING;
         this.timer = 0;
         this.display = new Display(this);
 
@@ -45,7 +43,6 @@ export default class Game {
         this.colission = new Collision(this);
 
         this.canShoot = false;
-        this.newRound();
     }
 
     runIntro() {
@@ -140,6 +137,20 @@ export default class Game {
         if (this.gamestate === GAMESTATE.PAUSED ||
             this.gamestate === GAMESTATE.MENU) return;
 
+        if (this.gamestate === GAMESTATE.GAMEOVER) {
+            if (this.runLaugh) {
+                this.dog.laugh();
+            }
+            this.timer += deltaTime/16;
+            this.runLaugh = false;
+            this.dog.update(deltaTime);
+
+            if (this.timer > 200) {
+                this.gamestate = GAMESTATE.MENU;
+            }
+            return;
+        }
+
         if (this.gameMode === 1) {
             this.gameMode1();
         } else if (this.gameMode === 2) {
@@ -154,12 +165,14 @@ export default class Game {
         this.input.limitClick(deltaTime);
 
         if (!this.dog.runIntro && this.respawn) {
+            // Respawn duck after intro
             this.respawnDuck();
             this.canShoot = true;
             this.respawn = false;
         }
 
         if (this.gameStats.shoot >= 3) {
+            // Lose round after 3 shots without hit
             this.loseSubRound();
         }
 
@@ -167,15 +180,18 @@ export default class Game {
             if (this.gameStats.currentSubRound !== 10) {
                 this.newSubRound();
             } else {
+                // Check game stats (game over/perfect round/next round)
                 this.gameStats.summaryRounds();
-
+                // Add perfect bonus if round is perfect
                 if (this.perfectRound) {
                     this.showPerfectButton(deltaTime);
                     return;
                 }
 
                 // New round after 10 sub rounds;
-                this.newRound();
+                if (!this.gamestate === GAMESTATE.GAMEOVER) {
+                    this.newRound();
+                }
             }
         }
     }
@@ -189,9 +205,6 @@ export default class Game {
 
     }
 }
-// Śmiech psa gdy jest gameover
-
-// Ilość punktów za trafienie po zestrzeleniu kaczki wyświetlana w tle
 
 // Konfiguracja trybu 2 kaczek (wtedy zachowanie psa gdy kaczki spadną!)
 // Dodanie dźwięków

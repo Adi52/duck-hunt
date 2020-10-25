@@ -34,11 +34,16 @@ export default class Input {
             this.game.input.mouseY > 415 && this.game.input.mouseY < 432) {
             this.game.gamestate = 1;
             this.game.gameMode = 1;
+            this.game.start();
+            this.game.newRound();
+
         }
         if (this.game.input.mouseX > 217 && this.game.input.mouseX < 553 &&
             this.game.input.mouseY > 458 && this.game.input.mouseY < 475) {
             this.game.gamestate = 1;
             this.game.gameMode = 2;
+            this.game.newRound();
+
         }
 
     }
