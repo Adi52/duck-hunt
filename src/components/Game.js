@@ -25,22 +25,25 @@ export default class Game {
         this.gameMode = 1; // 1 or 2 ducks
         this.grassImage = document.querySelector('#grass');
         this.gamestate = GAMESTATE.MENU;
+
+        this.input = new Input(this, document.querySelector('#canvas'));
+        this.gameStats = new GameStats(this);
+        this.colission = new Collision(this);
+        this.display = new Display(this);
+
     }
 
     start() {
         this.runLaugh = true;
 
         this.timer = 0;
-        this.display = new Display(this);
 
         this.ducks = [new Duck(this), new RedDuck(this), new BlueDuck(this)];
 
-        this.input = new Input(this, document.querySelector('#canvas'));
-        this.gameStats = new GameStats(this);
+
 
         this.dog = new Dog(this);
         this.duck = this.ducks[0];
-        this.colission = new Collision(this);
 
         this.canShoot = false;
     }
@@ -135,7 +138,9 @@ export default class Game {
 
     update(deltaTime) {
         if (this.gamestate === GAMESTATE.PAUSED ||
-            this.gamestate === GAMESTATE.MENU) return;
+            this.gamestate === GAMESTATE.MENU) {
+            return;
+        }
 
         if (this.gamestate === GAMESTATE.GAMEOVER) {
             if (this.runLaugh) {
