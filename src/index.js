@@ -1,6 +1,7 @@
 import './sass/index.scss';
 
 import Game from "./components/Game"
+import VolumeControl from "./components/VolumeControl";
 
 let canvas = document.querySelector('#canvas');
 let ctx = canvas.getContext('2d');
@@ -12,7 +13,9 @@ const GAME_WIDTH = 768;
 const GAME_HEIGHT = 720;
 
 
-let game = new Game(GAME_WIDTH, GAME_HEIGHT, ctx)
+let game = new Game(GAME_WIDTH, GAME_HEIGHT, ctx);
+// let volume = new VolumeControl();
+
 game.start();
 
 let lastTime = 0;

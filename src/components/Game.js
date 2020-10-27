@@ -8,6 +8,7 @@ import Dog from "./Dog";
 import Duck from "./Duck";
 import RedDuck from "./RedDuck";
 import BlueDuck from "./BlueDuck";
+import VolumeControl from "./VolumeControl";
 
 const GAMESTATE = {
     PAUSED: 0,
@@ -33,6 +34,8 @@ export default class Game {
         this.sounds = new Sounds();
 
         this.pausedAudio = [];
+        this.volume = new VolumeControl();
+
     }
 
     start() {
@@ -49,6 +52,7 @@ export default class Game {
     }
 
     runIntro() {
+        this.sounds.start.stop();
         this.sounds.intro.play();
         this.dog.runIntro = true;
     }
@@ -133,10 +137,7 @@ export default class Game {
         }
 
         if (this.gamestate === GAMESTATE.MENU) {
-            if (this.runStartSound) {
-                this.sounds.start.play();
-                this.runStartSound = false;
-            }
+            // this.sounds.start.play();
             return;
         }
 
@@ -222,4 +223,4 @@ export default class Game {
     }
 }
 
-// Poprawienie lotu kaczki, usunięcie błędów
+// Trzeba jeszcze dodać 'loading' przed załadowaniem wszystkich materiałów
