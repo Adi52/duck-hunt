@@ -67,6 +67,8 @@ export default class GameStats {
             }
         })
 
+        this.setBestScore();
+
         if (this.missHits >= this.missAvailable) {
             this.game.gamestate = 3; // game over
             this.game.sounds.gameOver.play();
@@ -105,6 +107,5 @@ export default class GameStats {
         this.changeMissHits();
         this.changePointsPerDuck();
         this.changePerfectBonusScore()
-        this.setBestScore();
     }
 }

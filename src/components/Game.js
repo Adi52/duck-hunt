@@ -56,6 +56,7 @@ export default class Game {
     }
 
     newRound() {
+        this.gameStats.checked = false;
         this.timer = 0;
 
         this.canShoot = false;
@@ -67,12 +68,8 @@ export default class Game {
 
         this.gameStats.update();
 
-        // this.gameStats.correctHits = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-        // this.gameStats.currentSubRound = 0;
-
-        this.gameStats.correctHits = [-1, -1, -1, -1, -1, -1, 1, 1, -1, 0];
-        this.gameStats.currentSubRound = 9;
-
+        this.gameStats.correctHits = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        this.gameStats.currentSubRound = 0;
 
         this.gameStats.missHits = 0;
 
