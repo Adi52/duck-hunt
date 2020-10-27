@@ -31,6 +31,8 @@ export default class Game {
         this.colission = new Collision(this);
         this.display = new Display(this);
         this.sounds = new Sounds();
+
+        this.pausedAudio = [];
     }
 
     start() {
@@ -198,15 +200,26 @@ export default class Game {
     }
 
     togglePause() {
+        let sounds = document.getElementsByTagName('audio');
+
         if (this.gamestate === GAMESTATE.PAUSED) {
             this.gamestate = GAMESTATE.RUNNING;
+
+            this.pausedAudio.forEach(function (sound) {
+                sound.play();
+            })
+            this.pausedAudio = [];
         } else if (this.gamestate !== GAMESTATE.MENU) {
+            for(let i=0; i<sounds.length; i++) {
+                if (!sounds[i].paused) {
+                    this.pausedAudio.push(sounds[i])
+                    sounds[i].pause();
+                }
+            }
             this.gamestate = GAMESTATE.PAUSED;
         }
 
     }
 }
 
-// Poprawienie błędu z game over
-// Poprawienie błędu z perfect, nie wykonuje się wiecej niż raz!
 // Poprawienie lotu kaczki, usunięcie błędów

@@ -3,13 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="9a434661-c348-492d-96cc-8ebb9f3cbbae" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/audio/duck-falling-w-drop.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/audio/duck-flapping.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/audio/lose-2.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/audio/lose.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/GameStats.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GameStats.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Input.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Input.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +70,7 @@
       <workItem from="1603027468903" duration="14349000" />
       <workItem from="1603226013088" duration="4123000" />
       <workItem from="1603289730745" duration="53635000" />
-      <workItem from="1603665572816" duration="13415000" />
+      <workItem from="1603665572816" duration="15303000" />
     </task>
     <servers />
   </component>
