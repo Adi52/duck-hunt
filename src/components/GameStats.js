@@ -69,6 +69,7 @@ export default class GameStats {
 
         if (this.missHits >= this.missAvailable) {
             this.game.gamestate = 3; // game over
+            this.game.sounds.gameOver.play();
         }
     }
 

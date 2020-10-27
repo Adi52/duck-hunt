@@ -78,6 +78,8 @@ export default class Duck {
         this.position.y = this.gameHeight * 0.6 - 20;
         this.position.x = (Math.random() * 600) + 50;
         this.directionY = (Math.random() * 1.3) + 0.9;
+        this.game.sounds.duckFlapping.loop = true;
+        this.game.sounds.duckFlapping.play();
     }
 
     flyUpAnimation(deltaTime) {
@@ -98,10 +100,12 @@ export default class Duck {
     }
 
     beHitAnimation(deltaTime) {
+        this.game.canShoot = false;
         this.counterBeHit += deltaTime / 200;
 
-        if (this.counterBeHit < 6) {
+        if (this.counterBeHit < 1) {
             this.duckAlive = false;
+            setTimeout(() => this.game.sounds.duckFalling.play(), 200);
 
             this.ducksImage = this.ducksFallImage;
             this.currentFrame = 0;
@@ -113,11 +117,18 @@ export default class Duck {
     fallAnimation(deltaTime) {
         this.counter += deltaTime / 200;
 
-        if (this.position.y > this.gameWidth) {
+        if (this.position.y > this.gameHeight * 0.7 && this.dropSoundActive) {
+            this.dropSoundActive = false;
+            this.game.sounds.duckFalling.stop();
+            this.game.sounds.duckDrop.play();
+        }
+
+        if (this.position.y > this.gameHeight) {
             this.beHit = false;
 
             this.counterBeHit = 0;
             this.runDogPickUp = true;
+            this.game.sounds.duckCaught.play();
         }
 
         if (Math.round(this.counter) % 2 === 0) this.currentFrame = 1;

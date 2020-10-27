@@ -1,11 +1,14 @@
 
 export default class Sound {
-    constructor(src) {
+    constructor(src, loop = false) {
         this.sound = document.createElement("audio");
         this.sound.src = 'audio/' + src;
         // this.sound.setAttribute("preload", "auto");
         this.sound.setAttribute("controls", "none");
-        this.sound.volume = 0.1;
+        if (loop) {
+            this.sound.loop = true;
+        }
+        this.sound.volume = 0.05;
         this.sound.style.display = "none";
         document.body.appendChild(this.sound);
     }
@@ -16,5 +19,6 @@ export default class Sound {
 
     stop = function () {
         this.sound.pause();
+        this.sound.currentTime = 0;
     }
 }

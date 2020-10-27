@@ -136,9 +136,16 @@ export default class Dog {
     }
 
     laugh() {
+
+        if (!this.game.sounds.duckFlapping.paused) {
+            this.game.sounds.duckFlapping.stop();
+        }
+
+        this.game.sounds.dogLaugh.play();
+
         this.position.x = this.gameWidth / 2 - this.dogWidth;
         this.position.y = this.gameHeight * 0.6;
-        // this.position.y = this.gameHeight * 0.4;
+
         this.currentRow = 1;
         this.speed = 1;
         this.correction = -27;
@@ -166,7 +173,6 @@ export default class Dog {
 
     pickUp(numberOfDucks, duckPosX) {
 
-        // this.position.x = this.gameWidth/2 - this.dogWidth;
         this.position.x = duckPosX - (this.dogWidth + 100) / 2;
         this.position.y = this.gameHeight * 0.6;
         this.currentRow = 1;
@@ -200,7 +206,6 @@ export default class Dog {
             } else {
                 this.pickUpDirection = -this.pickUpDirection;
             }
-
         }
 
         this.position.y -= deltaTime / 5 * this.pickUpDirection;

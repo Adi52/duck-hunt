@@ -67,8 +67,12 @@ export default class Game {
 
         this.gameStats.update();
 
-        this.gameStats.correctHits = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-        this.gameStats.currentSubRound = 0;
+        // this.gameStats.correctHits = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        // this.gameStats.currentSubRound = 0;
+
+        this.gameStats.correctHits = [-1, -1, -1, -1, -1, -1, 1, 1, -1, 0];
+        this.gameStats.currentSubRound = 9;
+
 
         this.gameStats.missHits = 0;
 
@@ -81,6 +85,7 @@ export default class Game {
     newSubRound() {
         this.dog.resetPropertiesAfterRound();
         this.duck.wholeDistanceTraveled = 0;
+        this.duck.dropSoundActive = true;
 
         // Generate random color duck
         this.duck = this.ducks[Math.floor(Math.random() * 3)];
@@ -137,6 +142,7 @@ export default class Game {
         }
 
         if (this.gamestate === GAMESTATE.GAMEOVER) {
+            this.canShoot = false;
             if (this.runLaugh) {
                 this.dog.laugh();
             }
@@ -144,7 +150,7 @@ export default class Game {
             this.runLaugh = false;
             this.dog.update(deltaTime);
 
-            if (this.timer > 200) {
+            if (this.timer > 350) {
                 this.gamestate = GAMESTATE.MENU;
             }
             return;
@@ -204,7 +210,6 @@ export default class Game {
     }
 }
 
-// Dodanie dźwięków
-
+// Poprawienie błędu z game over
+// Poprawienie błędu z perfect, nie wykonuje się wiecej niż raz!
 // Poprawienie lotu kaczki, usunięcie błędów
-// Zapisywanie best score w ciasteczkach
