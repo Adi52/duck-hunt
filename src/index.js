@@ -12,7 +12,6 @@ const GAME_HEIGHT = 720;
 
 let loading = document.querySelector('.loading');
 
-
 function startGame() {
     loading.classList.remove('visible');
     let background_game_image = document.querySelector('#background');
