@@ -1,4 +1,5 @@
 @import 'loading';
+@import 'volumeControlPanel';
 
 * {
   margin: 0;
@@ -7,27 +8,11 @@
 }
 
 body {
+  user-select: none;
   background-color: dimgrey;
   display: flex;
-  //align-content: center;
   justify-content: center;
 
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-}
-
-.volume {
-  align-self: flex-end;
-}
-
-.fas {
-  cursor: pointer;
-  &:hover {
-    color: #262626;
-  }
 }
 
 img {

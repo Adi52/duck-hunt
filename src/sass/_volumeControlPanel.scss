@@ -1,0 +1,20 @@
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.volume {
+  align-self: flex-end;
+}
+
+.fas {
+  cursor: pointer;
+  &:hover {
+    color: #262626;
+  }
+}
+
+.fa-volume-mute.active {
+  color: #262626;
+}

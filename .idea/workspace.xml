@@ -2,18 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a434661-c348-492d-96cc-8ebb9f3cbbae" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/LoadAssets.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sass/_loading.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sass/_volumeControlPanel.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dog.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Input.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Input.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Sound.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sound.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Sounds.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sounds.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/VolumeControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/VolumeControl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sass/_loading.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/sass/_loading.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sass/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/sass/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/template.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +71,7 @@
       <workItem from="1603027468903" duration="14349000" />
       <workItem from="1603226013088" duration="4123000" />
       <workItem from="1603289730745" duration="53635000" />
-      <workItem from="1603665572816" duration="39521000" />
+      <workItem from="1603665572816" duration="42108000" />
     </task>
     <servers />
   </component>
@@ -90,11 +83,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="174" width="1092" height="715" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1602406477497" />
-    <state x="183" y="258" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603837346875">
+    <state x="183" y="258" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603899130842">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="229" y="325" key="#com.intellij.fileTypes.FileTypeChooser/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1602413582916" />
-    <state x="183" y="258" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1603837346875" />
+    <state x="183" y="258" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1603899130842" />
     <state x="210" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1602408965256">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

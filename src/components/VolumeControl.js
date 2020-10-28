@@ -14,6 +14,7 @@ export default class VolumeControl {
 
     volumeMuteFun() {
         this.sounds = document.getElementsByTagName('audio');
+        document.querySelector('.fa-volume-mute').classList.toggle('active');
         for (let item of this.sounds) {
             if (item.volume === 0) {
                 item.volume = 0.05;
