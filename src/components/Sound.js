@@ -3,7 +3,7 @@ export default class Sound {
     constructor(src, loop = false) {
         this.sound = document.createElement("audio");
         this.sound.src = 'audio/' + src;
-        // this.sound.setAttribute("preload", "auto");
+        this.sound.setAttribute("preload", "auto");
         this.sound.setAttribute("controls", "none");
         if (loop) {
             this.sound.loop = true;

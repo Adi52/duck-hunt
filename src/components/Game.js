@@ -24,18 +24,17 @@ export default class Game {
         this.gameHeight = gameHeight;
         this.ctx = ctx;
 
-        this.grassImage = document.querySelector('#grass');
-        this.gamestate = GAMESTATE.MENU;
-
+        this.sounds = new Sounds();
         this.input = new Input(this, document.querySelector('#canvas'));
         this.gameStats = new GameStats(this);
         this.colission = new Collision(this);
         this.display = new Display(this);
-        this.sounds = new Sounds();
 
         this.pausedAudio = [];
         this.volume = new VolumeControl();
 
+        this.grassImage = document.querySelector('#grass');
+        this.gamestate = GAMESTATE.MENU;
     }
 
     start() {
@@ -52,7 +51,6 @@ export default class Game {
     }
 
     runIntro() {
-        this.sounds.start.stop();
         this.sounds.intro.play();
         this.dog.runIntro = true;
     }

@@ -40,7 +40,6 @@ export default class Dog {
     }
 
     resetPropertiesAfterRound() {
-        // this.drawGrass = false;
         this.currentFrame = 1;
         this.correctionRow = 0;
         this.currentRow = 0;

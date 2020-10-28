@@ -14,7 +14,6 @@ export default class VolumeControl {
 
     volumeMuteFun() {
         this.sounds = document.getElementsByTagName('audio');
-
         for (let item of this.sounds) {
             if (item.volume === 0) {
                 item.volume = 0.05;
