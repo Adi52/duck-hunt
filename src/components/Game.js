@@ -113,7 +113,7 @@ export default class Game {
         this.timer += deltaTime/16;
 
         this.display.perfectButton();
-        if (this.timer > 150) {
+        if (this.timer > 100) {
             this.newRound();
         }
     }
@@ -187,6 +187,9 @@ export default class Game {
                 }
                 // Add perfect bonus if round is perfect
                 if (this.perfectRound) {
+                    if (!this.sounds.perfect.paused) {
+                        this.sounds.perfect.play();
+                    }
                     this.showPerfectButton(deltaTime);
                     return;
                 }
@@ -221,4 +224,7 @@ export default class Game {
     }
 }
 
-// Trzeba jeszcze dodać 'loading' przed załadowaniem wszystkich materiałów
+// refaktoryzacja Game loop
+// poprawienie lotu kaczki
+// readme
+// wersja produckyjna!

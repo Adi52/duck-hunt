@@ -2,8 +2,6 @@ import Sound from "./Sound";
 
 export default class Sounds {
     constructor() {
-        // this.start = new Sound('start.mp3');
-
         this.intro = new Sound('intro.mp3');
 
         this.duckFlapping = new Sound('duck-flappingg.mp3', true);
@@ -15,6 +13,7 @@ export default class Sounds {
 
         this.dogLaugh = new Sound('dog-laughing.mp3');
 
+        this.perfect = new Sound('perfect.mp3');
         this.gameOver = new Sound('game-over.mp3');
     }
 }
