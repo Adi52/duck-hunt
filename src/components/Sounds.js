@@ -2,6 +2,8 @@ import Sound from "./Sound";
 
 export default class Sounds {
     constructor() {
+        this.start = new Sound('start.mp3');
+
         this.intro = new Sound('intro.mp3');
 
         this.duckFlapping = new Sound('duck-flappingg.mp3', true);

@@ -38,6 +38,7 @@ export default class Game {
     }
 
     start() {
+        this.canStartMusic = true;
         this.runLaugh = true;
 
         this.timer = 0;
@@ -51,8 +52,11 @@ export default class Game {
     }
 
     runIntro() {
+        this.sounds.start.stop();
         this.sounds.intro.play();
         this.dog.runIntro = true;
+
+        this.canStartMusic = true;
     }
 
     respawnDuck() {
@@ -118,6 +122,66 @@ export default class Game {
         }
     }
 
+    summaryRound(deltaTime) {
+        if (this.gameStats.currentSubRound !== 10) {
+            this.newSubRound();
+        } else {
+            // Check game stats (game over/perfect round/next round)
+            if (!this.gameStats.checked) {
+                this.gameStats.summaryRounds();
+
+            }
+            // Add perfect bonus if round is perfect
+            if (this.perfectRound) {
+                if (!this.sounds.perfect.paused) {
+                    this.sounds.perfect.play();
+                }
+                this.showPerfectButton(deltaTime);
+                return;
+            }
+            // New round after 10 sub rounds;
+            if (!(this.gamestate === GAMESTATE.GAMEOVER)) {
+                this.newRound();
+            }
+        }
+    }
+
+    gameOver(deltaTime) {
+        this.canShoot = false;
+        if (this.runLaugh) {
+            this.dog.laugh();
+        }
+        this.timer += deltaTime/16;
+        this.runLaugh = false;
+        this.dog.update(deltaTime);
+
+        if (this.timer > 350) {
+            this.gamestate = GAMESTATE.MENU;
+        }
+    }
+
+    togglePause() {
+        let sounds = document.getElementsByTagName('audio');
+
+        if (this.gamestate === GAMESTATE.PAUSED) {
+            this.gamestate = GAMESTATE.RUNNING;
+
+            this.pausedAudio.forEach(function (sound) {
+                sound.play();
+            })
+            this.pausedAudio = [];
+        } else if (this.gamestate !== GAMESTATE.MENU) {
+            for(let i=0; i<sounds.length; i++) {
+                if (!sounds[i].paused) {
+                    this.pausedAudio.push(sounds[i])
+                    sounds[i].pause();
+                }
+            }
+            this.gamestate = GAMESTATE.PAUSED;
+        }
+
+    }
+
     draw() {
         this.dog.draw();
         this.duck.draw();
@@ -135,22 +199,15 @@ export default class Game {
         }
 
         if (this.gamestate === GAMESTATE.MENU) {
-            // this.sounds.start.play();
+            if (this.canStartMusic) {
+                this.sounds.start.play();
+                this.canStartMusic = false;
+            }
             return;
         }
 
         if (this.gamestate === GAMESTATE.GAMEOVER) {
-            this.canShoot = false;
-            if (this.runLaugh) {
-                this.dog.laugh();
-            }
-            this.timer += deltaTime/16;
-            this.runLaugh = false;
-            this.dog.update(deltaTime);
-
-            if (this.timer > 350) {
-                this.gamestate = GAMESTATE.MENU;
-            }
+            this.gameOver(deltaTime);
             return;
         }
 
@@ -177,54 +234,12 @@ export default class Game {
         }
 
         if (this.dog.canStartNextSubRound) {
-            if (this.gameStats.currentSubRound !== 10) {
-                this.newSubRound();
-            } else {
-                // Check game stats (game over/perfect round/next round)
-                if (!this.gameStats.checked) {
-                    this.gameStats.summaryRounds();
-
-                }
-                // Add perfect bonus if round is perfect
-                if (this.perfectRound) {
-                    if (!this.sounds.perfect.paused) {
-                        this.sounds.perfect.play();
-                    }
-                    this.showPerfectButton(deltaTime);
-                    return;
-                }
-                // New round after 10 sub rounds;
-                if (!(this.gamestate === GAMESTATE.GAMEOVER)) {
-                    this.newRound();
-                }
-            }
+            this.summaryRound(deltaTime);
         }
-    }
-
-    togglePause() {
-        let sounds = document.getElementsByTagName('audio');
-
-        if (this.gamestate === GAMESTATE.PAUSED) {
-            this.gamestate = GAMESTATE.RUNNING;
-
-            this.pausedAudio.forEach(function (sound) {
-                sound.play();
-            })
-            this.pausedAudio = [];
-        } else if (this.gamestate !== GAMESTATE.MENU) {
-            for(let i=0; i<sounds.length; i++) {
-                if (!sounds[i].paused) {
-                    this.pausedAudio.push(sounds[i])
-                    sounds[i].pause();
-                }
-            }
-            this.gamestate = GAMESTATE.PAUSED;
-        }
-
     }
 }
 
-// refaktoryzacja Game loop
+
 // poprawienie lotu kaczki
 // readme
 // wersja produckyjna!
