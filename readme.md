@@ -1,19 +1,26 @@
 
 <p align="center">
-  <img src="readme_images/duck-hunt.png" />
-  <h1>Duck Hunt</h1>
-  <a href="https://adi52.github.io/DuckHunt/build/index.html"><strong>View a Demo »</strong></a>
+  <img src="readme_images/duck-hunt.png" width="300">
+  <h3 align="center">Duck Hunt</h3>
+  <p align="center">
+    <a href="https://adi52.github.io/DuckHunt/build/index.html"><strong>View a Demo »</strong></a>
+  </p>
 </p>
 
 
 ## Table of contents
 * [General info](#general-info)
-* [Screenshots](#screenshots)
+  * [Game play](#game-play)
+  * [Win condition](#win-condition)
+  * [Points](#points)
+  * [Perfect score](#perfect-score)
+  * [Controllers](#controllers)
+* [Availability](#availability)
 * [Technologies](#technologies)
 * [Setup](#setup)
-* [Features](#features)
 * [Status](#status)
 * [Inspiration](#inspiration)
+* [Screenshots](#screenshots)
 * [Contact](#contact)
 
 ## General info
@@ -64,7 +71,7 @@ the price per round, you can receive a different number of points.
   * Red Duck: 2000
   * Blue Duck: 3000
 
-### Perfect
+### Perfect score
 
 If you get `Perfect!` At the end of the round you will get extra points:
  * Round 1 - 3    
