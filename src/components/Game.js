@@ -157,6 +157,7 @@ export default class Game {
 
         if (this.timer > 350) {
             this.gamestate = GAMESTATE.MENU;
+            this.gameStats.score = 0;
         }
     }
 
@@ -240,6 +241,5 @@ export default class Game {
 }
 
 
-// poprawienie lotu kaczki
 // readme
 // wersja produckyjna!

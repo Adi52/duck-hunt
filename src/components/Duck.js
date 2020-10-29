@@ -78,7 +78,7 @@ export default class Duck {
     respawn() {
         this.position.y = this.gameHeight * 0.6 - 20;
         this.position.x = (Math.random() * 600) + 50;
-        this.directionY = (Math.random() * 1.3) + 0.9;
+        this.directionY = (Math.random() * 0.7) + 0.9;
         this.game.sounds.duckFlapping.loop = true;
         this.game.sounds.duckFlapping.play();
     }
@@ -214,8 +214,8 @@ export default class Duck {
                 this.duckDirection = -this.duckDirection;
 
                 this.directionX = -this.directionX + changeDegOfDuck;
-                if (Math.random() > 0.7 && this.position.y < this.gameHeight * 0.4) {
-                    this.directionY = 0;
+                if (Math.random() > 0.6 && this.position.y < this.gameHeight * 0.4) {
+                    this.directionY = Math.random() * 0.5;
                 } else {
                     this.directionY += changeDegOfDuck;
                 }
