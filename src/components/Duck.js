@@ -20,6 +20,7 @@ export default class Duck {
             y: this.gameHeight,
         };
         this.flyAwayNow = false;
+        this.dropSoundActive = true;
 
         // images
         this.ducksFlyUpImage = document.querySelector('#ducksFlyUpImg');
