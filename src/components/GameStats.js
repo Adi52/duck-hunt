@@ -19,11 +19,11 @@ export default class GameStats {
     }
 
     changePerfectBonusScore() {
-        if (this.round < 3) {
+        if (this.round < 4) {
             this.perfectBonusScore = 10000;
-        } else if (this.round < 6) {
+        } else if (this.round < 7) {
             this.perfectBonusScore = 15000;
-        } else if (this.round < 10) {
+        } else if (this.round < 11) {
             this.perfectBonusScore = 20000;
         } else {
             this.perfectBonusScore = 30000;
@@ -31,11 +31,11 @@ export default class GameStats {
     }
 
     changeMissHits() {
-        if (this.round < 3) {
+        if (this.round < 4) {
             this.missAvailable = 4;
-        } else if (this.round < 6) {
+        } else if (this.round < 7) {
             this.missAvailable = 3;
-        } else if (this.round < 10) {
+        } else if (this.round < 11) {
             this.missAvailable = 2;
         } else {
             this.missAvailable = 1;
@@ -74,11 +74,11 @@ export default class GameStats {
     }
 
     changePointsPerDuck() {
-        if (this.round < 3) {
+        if (this.round < 4) {
             this.game.ducks[0].points = 500;
             this.game.ducks[1].points = 1000;
             this.game.ducks[2].points = 1500;
-        } else if (this.round < 6) {
+        } else if (this.round < 7) {
             this.game.ducks[0].points = 800;
             this.game.ducks[1].points = 1600;
             this.game.ducks[2].points = 2400;
