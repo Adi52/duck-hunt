@@ -11,7 +11,7 @@ export default class GameStats {
 
         this.correctHits = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-        this.missAvailable = 5;
+        this.missAvailable = 4;
 
         this.currentSubRound = 0;
         this.round = 0;

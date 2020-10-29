@@ -32,21 +32,26 @@ module.exports = {
       },
       {
         test: /\.(mp3|wav)$/,
-      use: [
-        {
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-            outputPath: '../audio/',
-            publicPath: 'audio/',
-            useRelativePaths: true
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: '../audio/',
+              publicPath: 'audio/',
+              useRelativePaths: true
+            }
           }
-        }
-        ]
+          ]
       },
       {
         test: /\.(jpg|png|svg|gif|jpeg)$/,
-        use: 'file-loader',
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          publicPath: 'images',
+          outputPath: 'images',
+        }
       },
       {
         test: /\.js$/,
@@ -67,7 +72,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: "src/templates/template.html",
-      title: "nowa aplikacja"
+      title: "Duck Hunt"
     }),
   ]
 }
