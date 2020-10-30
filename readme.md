@@ -154,4 +154,4 @@ canvas, I decided to try to write a retro game. Duck Hunt was chosen because of 
 </p>
 
 ## Contact
-Created by [bielinski.dev](bielinski.dev) - feel free to contact me!
+Created by [bielinski.dev](https://github.com/adi52) - feel free to contact me!
