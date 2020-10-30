@@ -1,0 +1,30 @@
+.mobiles {
+  display: none;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  font-family: 'Press Start 2P', serif;
+  text-align: center;
+  margin: 0 10px;
+
+  h2 {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 11px;
+  }
+
+  a {
+    color: #00eede;
+  }
+
+  img {
+    border: 1px black solid;
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+  }
+}
+

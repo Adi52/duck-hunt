@@ -1,0 +1,9 @@
+@media (max-width: 767px) {
+  .mobiles {
+    display: flex;
+  }
+
+  .loading, .volume, #canvas {
+    display: none;
+  }
+}
