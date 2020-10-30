@@ -95,6 +95,11 @@ The Escape key enables and disables paused.
 
 
 ### Sounds :notes:
+
+<p align="center">
+  <img src="readme_images/volume-control-panel.gif">
+</p>
+
 All sounds came from the original Duck Hunt game are imported into the game. Below the window game there is a volume
 panel where you can turn the sound down / up or off completely.
 
@@ -108,8 +113,8 @@ The game is suitable only for desktop devices equipped with a mouse. There is no
 The game was written entirely in HTML5 Canvas and Javascript.
 
 - HTML5 canvas
-- JavaScript
-- sass
+- JavaScript ES6
+- Sass
 - Webpack
 
 ## Setup
