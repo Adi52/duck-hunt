@@ -73,7 +73,9 @@ on the round, you can receive a different number of points.
 
 ### Perfect score
 
-  <img src="readme_images/duck-hunt.png" width="100">
+<p align="center">
+  <img src="readme_images/perfect.png" width="100">
+</p>
 
 If you get `Perfect!` At the end of the round you will get extra points:
  * Round 1 - 3    

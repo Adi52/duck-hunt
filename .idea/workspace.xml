@@ -3,7 +3,35 @@
   <component name="ChangeListManager">
     <list default="true" id="9a434661-c348-492d-96cc-8ebb9f3cbbae" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/audio/dog-laughing.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/audio/duck-caught.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/audio/duck-drop.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/audio/duck-falling.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/audio/duck-flappingg.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/audio/game-over.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/audio/gun-shot.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/audio/intro.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/audio/perfect.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/audio/start.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/images/big_button.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/images/dog.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/images/duck_fall.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/images/duck_fly_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/images/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/images/game_board.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/images/game_board_grass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/images/old-background/game_board.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/images/old-background/game_board_grass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/images/shot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/images/small_button.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/images/subround_duck_red.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/images/subround_duck_white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/js/main-7b978e6d2d996c396066.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main-b7e6f78224f5538b4178.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sass/_volumeControlPanel.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/sass/_volumeControlPanel.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +137,7 @@
       <workItem from="1603027468903" duration="14349000" />
       <workItem from="1603226013088" duration="4123000" />
       <workItem from="1603289730745" duration="53635000" />
-      <workItem from="1603665572816" duration="71244000" />
+      <workItem from="1603665572816" duration="71427000" />
     </task>
     <servers />
   </component>
