@@ -28,10 +28,10 @@ This is the cult 80’s game recreated by me and transferred to the internet bro
 
 ### Game play
 
-We observe the game from the shooter's eyes, and our task is to hit the ducks flying out of the bushes. 
+We observe the game from the shooter's perspective, and our task is to hit the ducks, which are flying out of the bushes. 
 The game is divided into rounds in which we have 10 sub-rounds. Each round starts with an intro in which our assistant 
-(or enemy number 1 :smiling_imp:) the dog chases away the ducks hiding in the bushes. During each sub-round, we have 3 shots. 
-If all of them are missed or a certain time passes - the duck flies away and we lose the sub-round which is represented 
+(or enemy number 1 :smiling_imp:) the dog chases away the ducks which are hiding in the bushes. During each sub-round, we have 3 shots. 
+If all of them are missed or a certain time passes - the duck flies away and we lose the sub-round. The lost sub-round is represented 
 by the bar at the bottom of the screen and the hated laugh of our dog friend :smiling_imp:. A red duck icon marks the target 
 hit. For each target hit, we get points, and if we hit all 10 targets, we get an additional reward in the form of a 
 bonus number of points (Perfect!).
@@ -56,8 +56,8 @@ menu, where you can start the game again from the 1st round.
 
 ### Points
 
-During each sub-round, one of the three ducks (Black, Red, and Blue) will be randomly respawned. For each of them, for 
-the price per round, you can receive a different number of points.
+During each sub-round, one of the three ducks (Black, Red, and Blue) will be randomly respawned. For each of them, based 
+on the round, you can receive a different number of points.
 * Round 1 - 3
   * Black duck: 500
   * Red duck: 1000
@@ -86,13 +86,13 @@ If you get `Perfect!` At the end of the round you will get extra points:
 
 ### Controllers
 
-All you need to play is the mouse you will shoot.
+All you need to play is the mouse with will you can shoot.
 The Escape key enables and disables paused.
 
 
 ### Sounds
 
-All original sounds from the original Duck Hunt game are imported into the game. Below the game window there is a volume
+All original sounds from the original Duck Hunt game are imported into the game. Below the window game there is a volume
 panel where you can turn the sound down / up or off completely.
 
 
@@ -135,7 +135,7 @@ Project is: `finished`. I don’t plan to expand this game, only a fix for bugs 
 
 ## Inspiration
 
-I was inspired to write this game by wanting to discover the power of HTML5 Canvas. After doing the first animations in 
+I was inspired to write this game by desire to discover the power of HTML5 Canvas. After doing the first animations in 
 canvas, I decided to try to write a retro game. Duck Hunt was chosen because of childhood memories.
 
 
