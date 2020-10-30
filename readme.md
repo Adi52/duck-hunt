@@ -26,7 +26,7 @@
 ## General info
 This is the cult 80’s game recreated by me and transferred to the internet browser.
 
-### Game play
+### Game play :video_game:
 
 We observe the game from the shooter's perspective, and our task is to hit the ducks, which are flying out of the bushes. 
 The game is divided into rounds in which we have 10 sub-rounds. Each round starts with an intro in which our assistant 
@@ -39,7 +39,7 @@ bonus number of points (Perfect!).
 As the rounds progress, the difficulty level increases, the ducks fly faster and faster, and we have less time to hit 
 the target.
 
-### Win condition
+### Win condition :star:
 
 To go to the next round, we have to hit a certain number of ducks in the current round. These conditions are shown below:
 * Round 1 – 3	
@@ -54,7 +54,7 @@ To go to the next round, we have to hit a certain number of ducks in the current
 If you do not meet the above condition, you lose the round, the dog laughs at you and then you are moved to the main 
 menu, where you can start the game again from the 1st round.
 
-### Points
+### Points :money_with_wings:
 
 During each sub-round, one of the three ducks (Black, Red, and Blue) will be randomly respawned. For each of them, based 
 on the round, you can receive a different number of points.
@@ -73,6 +73,8 @@ on the round, you can receive a different number of points.
 
 ### Perfect score
 
+  <img src="readme_images/duck-hunt.png" width="100">
+
 If you get `Perfect!` At the end of the round you will get extra points:
  * Round 1 - 3    
    * 10000 points
@@ -90,13 +92,12 @@ All you need to play is the mouse with will you can shoot.
 The Escape key enables and disables paused.
 
 
-### Sounds
-
-All original sounds from the original Duck Hunt game are imported into the game. Below the window game there is a volume
+### Sounds :notes:
+All sounds came from the original Duck Hunt game are imported into the game. Below the window game there is a volume
 panel where you can turn the sound down / up or off completely.
 
 
-## Availability
+## Availability :computer:
 
 The game is suitable only for desktop devices equipped with a mouse. There is no version for mobile devices.
 
