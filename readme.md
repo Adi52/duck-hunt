@@ -144,7 +144,9 @@ canvas, I decided to try to write a retro game. Duck Hunt was chosen because of 
 
 ## Screenshots
 
-`soon`
+<p align="center">
+  <img src="readme_images/duck-hunt-game.gif">
+</p>
 
 ## Contact
 Created by [bielinski.dev](bielinski.dev) - feel free to contact me!
