@@ -100,7 +100,7 @@ The Escape key enables and disables paused.
   <img src="readme_images/volume-control-panel.gif">
 </p>
 
-All sounds came from the original Duck Hunt game are imported into the game. Below the window game there is a volume
+All sounds came from the original Duck Hunt game. Below the window game there is a volume
 panel where you can turn the sound down / up or off completely.
 
 
