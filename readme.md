@@ -3,7 +3,7 @@
   <img src="readme_images/duck-hunt.png" width="300">
   <h3 align="center">Duck Hunt</h3>
   <p align="center">
-    <a href="https://adi52.github.io/DuckHunt/build/index.html"><strong>View a Demo »</strong></a>
+    <a href="https://adi52.github.io/duck-hunt/build/index.html"><strong>View a Demo »</strong></a>
   </p>
 </p>
 
@@ -119,7 +119,7 @@ The game was written entirely in HTML5 Canvas and Javascript.
 
 ## Setup
 
-Live version: [live](https://adi52.github.io/DuckHunt/build/index.html)
+Live version: [live](https://adi52.github.io/duck-hunt/build/index.html)
 
 Clone repo: 
 
